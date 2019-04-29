@@ -5,7 +5,7 @@ const User = require('../models/User')
 
 
 //SIGNUP
-//se quita o se pone el auth/signup en el get render? 
+//se quita o se pone el auth/signup en el get render?  
 router.get('/', (req, res, next) => res.render ('index')) 
 
 router.post('/', (req, res, next) => {
