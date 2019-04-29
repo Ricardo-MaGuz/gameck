@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const PLM = require("passport-local-mongoose")
+const Schema = mongoose.Schema
 
 const userSchema = new mongoose.Schema(
 {
@@ -21,12 +22,16 @@ const userSchema = new mongoose.Schema(
 		type:String,
 		unique: true,
 	}, 
-favoriteGames: {
-type:{}
-},
-photoURL: String,
-coverURL: String
-}
+	favoriteGames: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'Game'
+		}
+	],
+	password: String,
+	photoURL: String,
+	coverURL: String
+	}
 )
 
 userSchema.plugin(PLM, {usernameField: "email" })
