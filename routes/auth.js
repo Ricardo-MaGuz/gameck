@@ -18,9 +18,9 @@ router.post('/', (req, res, next) => {
       req.login(user, err => {
         if (err) return next(err)
          req.app.locals.loggedUser = user
-         if(req.user.role === 'Admin') return res.redirect('/admin')
-                else if (req.user.role === "Gamer") return res.redirect('/gamer')
-                else if (req.user.role === "Hacker") return res.redirect('/hacker')
+         if(req.user.role === 'Admin') return res.redirect('/admins')
+                else if (req.user.role === "Gamer") return res.redirect('/gamers')
+                else if (req.user.role === "Hacker") return res.redirect('/hackers')
       });
     }
   })(req, res, next)
@@ -37,9 +37,9 @@ router.post('/', (req, res, next) => {
         req.logIn(user, err => {
             if(err) return next(err)
             req.app.locals.loggedUser = user
-            if(req.user.role === 'Admin') return res.redirect('/admin')
-            else if (req.user.role === "Gamer") return res.redirect('/gamer')
-                else if (req.user.role === "Hacker") return res.redirect('/hacker')
+            if(req.user.role === 'Admin') return res.redirect('/admins')
+            else if (req.user.role === "Gamer") return res.redirect('/gamers')
+                else if (req.user.role === "Hacker") return res.redirect('/hackers')
         })
     }) (req, res, next)
 })
