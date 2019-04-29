@@ -4,11 +4,12 @@ const Schema = mongoose.Schema
 
 const userSchema = new mongoose.Schema(
 {
+	name: String,
 	email: {
 		type: String,
 		unique: true,
 	}, 
-	user: {
+	role: {
 		type: String, 
 		enum: ["Admin", "User", "Developer"],
 		default: "User"
@@ -23,6 +24,12 @@ const userSchema = new mongoose.Schema(
 		unique: true,
 	}, 
 	favoriteGames: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'Game'
+		}
+	],
+	addedGames: [
 		{
 			type: Schema.Types.ObjectId,
 			ref: 'Game'
