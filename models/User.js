@@ -4,13 +4,16 @@ const Schema = mongoose.Schema
 
 const userSchema = new mongoose.Schema(
 {
+	name: {
+		type: String,
+	},
 	email: {
 		type: String,
 		unique: true,
 	}, 
-	user: {
+	role: {
 		type: String, 
-		enum: ["Admin", "User", "Developer"],
+		enum: ["Admin", "Gamer", "Hacker"],
 		default: "User"
 	},
 	status: {
@@ -19,7 +22,7 @@ const userSchema = new mongoose.Schema(
 		default: "Pending Confirmation"
 	}, 
 	confirmationCode: {
-		type:String,
+		type: String,
 		unique: true,
 	}, 
 	favoriteGames: [
@@ -34,6 +37,5 @@ const userSchema = new mongoose.Schema(
 	}
 )
 
-userSchema.plugin(PLM, {usernameField: "email" })
+userSchema.plugin(PLM, {usernameField: "password" })
 module.exports = mongoose.model("User", userSchema)
-	
