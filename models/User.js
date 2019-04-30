@@ -9,8 +9,8 @@ const userSchema = new mongoose.Schema(
 	},
 	email: {
 		type: String,
-		unique: true,
-	}, 
+	},
+	password: String,
 	role: {
 		type: String, 
 		enum: ["Admin", "Gamer", "Hacker"],
@@ -23,7 +23,6 @@ const userSchema = new mongoose.Schema(
 	}, 
 	confirmationCode: {
 		type: String,
-		unique: true,
 	}, 
 	favoriteGames: [
 		{
@@ -37,11 +36,10 @@ const userSchema = new mongoose.Schema(
 			ref: 'Game'
 		}
 	],
-	password: String,
 	photoURL: String,
 	coverURL: String
 	}
 )
 
-userSchema.plugin(PLM, {usernameField: "password" })
+userSchema.plugin(PLM, {usernameField: "email" })
 module.exports = mongoose.model("User", userSchema)
