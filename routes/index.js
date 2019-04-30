@@ -11,4 +11,31 @@ router.get('/dashboard', (req, res, next) => {
   res.render(`dashboard/${role}`);
 });
 
+router.get('/admin', (req, res, next) => {
+  const { role } = req.user;
+
+  res.render('admin');
+});
+
+router.get('/games', (req, res, next) => {
+  Game.find()
+  .sort({ createdAt: -1 })
+  .then(games => {
+    res.render('games/all', {games})
+  })
+  .catch(err => next(err))
+})
+
+router.get('/games/:id', (req, res, next) => {
+  const {id} = req.params
+  const findGames= Game.findById(id)
+  .sort({createdAt: -1})
+  .then(response => {
+    res.render('games/detail', {
+      game: response[0]
+    })
+  })
+  .catch(err => next(err))
+})
+
 module.exports = router;

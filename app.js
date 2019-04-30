@@ -68,7 +68,8 @@ app.locals.title = 'Gameck';
 
 const index = require('./routes/index');
 const auth = require('./routes/auth');
-//const admin = require('./routes/admin');
+const admin = require('./routes/admin');
+app.use('/', admin);
 app.use('/', auth);
 app.use('/', index);
 app.use('/', isLogged)
