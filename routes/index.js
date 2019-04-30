@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
 router.get('/dashboard', (req, res, next) => {
   const { role } = req.user;
 
-  res.render(`${role}/profile`);
+  res.render(`dashboard/${role}`);
 });
 
 module.exports = router;

@@ -2,12 +2,12 @@ const router = require('express').Router()
 const User = require('../models/User')
 const Comment = require('../models/Game')
 
-router.get('/hackers', (req, res, next) => res.render('hackers/'))
+router.get('/dashboard', (req, res, next) => res.render('dashboard/'))
 
-router.get('/hackers/games', (req, res, next) => {
+router.get('/dashboard/games', (req, res, next) => {
   Comment.find()
     .then(comments => {
-      res.render('hackers/games', { games })
+      res.render('dashboard/games', { games })
     })
     .catch(err => next(err))
 })

@@ -14,7 +14,7 @@ const {isLogged} = require('./handlers/middlewares')
 
 
 mongoose
-  .connect('mongodb://localhost/appgameck', {useNewUrlParser: true})
+  .connect(process.env.DB, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
