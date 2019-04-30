@@ -2,24 +2,29 @@ const router = require('express').Router()
 const User = require('../models/User')
 const Game = require('../models/Game')
 
-router.get('/dashboard/admin', (req, res, next) => res.render('/dashboard/admin'))
+router.get('/admin', (req, res, next) => {
+  const { role } = req.user;
 
-router.get('/dashboard/games', (req, res, next) => {
+  res.render(`admin`);
+});
+router.get('/admin/index', (req, res, next) => res.render('/admin/index'))
+
+router.get('/admin/games', (req, res, next) => {
   Game.find()
     .sort({createdAt: -1})
     .then(games => {
-      res.render('/dashboard/games', { games })
+      res.render('/admin/games', { games })
     })
     .catch(err => next(err))
 })
 
-router.post('/dashboard/games/create', (req, res, next) => {
+router.post('/admin/games/create', (req, res, next) => {
   Game.create({...req.body})
-  .then(() => res.redirect('/dashboard/games'))
+  .then(() => res.redirect('/admin/games'))
   .catch(err => next(err))
 })
 
-router.get('/dashboard/games/edit/:id', (req, res, next) => {
+router.get('/admin/games/edit/:id', (req, res, next) => {
   const { id } = req.params
   Game.findById(id)
     .then(game => {
@@ -30,7 +35,7 @@ router.get('/dashboard/games/edit/:id', (req, res, next) => {
     })
 })
 
-router.post('/dashboard/games/edit/:id', (req, res, next) => {
+router.post('/admin/games/edit/:id', (req, res, next) => {
   const { id } = req.params
   Game.findByIdAndUpdate(id, { $set: { ...req.body } }, { new: true })
     .then(game => {
@@ -41,26 +46,26 @@ router.post('/dashboard/games/edit/:id', (req, res, next) => {
     })
 })
 
-router.get('/dashboard/games/delete/:id', (req, res, next) => {
+router.get('/admin/games/delete/:id', (req, res, next) => {
   const { id } = req.params
   Game.findByIdAndDelete(id)
-  .then(() => res.redirect('/dashboard/games'))
+  .then(() => res.redirect('/admin/games'))
   .catch(err => next(err))
 })
 
-router.get('/dashboard/users', (req, res, next) => {
+router.get('/admin/users', (req, res, next) => {
   User.find()
     .sort({ createdAt: -1 })
     .then(users => {
-      res.render('dashboard/users', { users })
+      res.render('admin/users', { users })
     })
     .catch(err => next(err))
 })
 
-router.get('/dashboard/users/delete/:id', (req, res, next) => {
+router.get('/admin/users/delete/:id', (req, res, next) => {
   const { id } = req.params
   User.findByIdAndDelete(id)
-  .then(() => res.redirect('/dashboard/users'))
+  .then(() => res.redirect('/admin/users'))
   .catch(err => next(err))
 })
 
