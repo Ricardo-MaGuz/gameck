@@ -24,7 +24,7 @@ router.get('/admin/games/edit/:id', (req, res, next) => {
   const { id } = req.params
   Game.findById(id)
     .then(game => {
-      res.render('games/new', {game})
+      res.render('admin/games/edit', {game})
     })
     .catch(err => {
       console.log(err)
@@ -35,6 +35,7 @@ router.post('/admin/games/edit/:id', (req, res, next) => {
   const { id } = req.params
   Game.findByIdAndUpdate(id, { $set: { ...req.body } }, { new: true })
     .then(game => {
+      console.log(game)
       res.redirect(`/games/${game._id}`)
     })
     .catch(err => {
