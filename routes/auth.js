@@ -19,7 +19,7 @@ router.post('/signup', (req, res, next) => {
         return res.redirect('/profile')
       })
     });
-  })
+  }) 
 
         /*passport.authenticate('local')(req, res, ()=>{
           req.app.locals.loggedUser = user
