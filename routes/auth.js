@@ -4,33 +4,43 @@ const User = require('../models/User')
 //const { isLogged } = require('../handlers/middlewares')
 
 
-//SIGNUP
-//se quita o se pone el auth/signup en el get render?  
+//SIGNUP 
 router.get('/', (req, res, next) => res.render ('index')) 
 
-router.post('/', (req, res, next) => {
-    const user = new User({ email: req.body.email, password: req.body.password, name: req.body.name });
-    user.save(function(err) {
-    if(err) {
-      console.log(err);
-    } else {
-      console.log('user: ' + user.email + " saved.");
-      req.login(user, err => {
-        if (err) return next(err)
-         req.app.locals.loggedUser = user
-         if(req.user.role === 'Admin') return res.redirect('/admins')
-                else if (req.user.role === "Gamer") return res.redirect('/gamers')
-                else if (req.user.role === "Hacker") return res.redirect('/hackers')
-      });
-    }
-  })(req, res, next)
-});
+router.post('/signup', (req, res, next) => {
+    User.register( new User({ email: req.body.email }),
+    req.body.password,
+    function(err, account){
+      if(err){
+        return res.json(err);
+      }
+      passport.authenticate('local')(req, res, () => {
+        console.log(req.user)
+        return res.redirect('/profile')
+      })
+    });
+  }) 
+
+        /*passport.authenticate('local')(req, res, ()=>{
+          req.app.locals.loggedUser = user
+          if(req.user.role === 'Admin') return res.redirect('/admins')
+          else if (req.user.role === "Gamer") return res.redirect('/gamers')
+          else if (req.user.role === "Hacker") return res.redirect('/hackers')
+          })
+      }*/
 
 //LOGIN
-//se quita o se pone el auth/login en el get render?
-router.get('/', (req, res, next) => res.render('index'))  
+router.post('/login', (req, res, next) => {
+    User.register( new User({ username: req.body.username }),
+    req.body.password,
+    function(err, account){
+      if(err){
+        return res.json(err);
+      }
+      return res.redirect('/login')
+    });
+  })
 
-router.post('/', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
         if(err) return next(err)
         if(!user) return res.redirect('index')
@@ -41,8 +51,7 @@ router.post('/', (req, res, next) => {
             else if (req.user.role === "Gamer") return res.redirect('/gamers')
                 else if (req.user.role === "Hacker") return res.redirect('/hackers')
         })
-    }) (req, res, next)
-})
+    })
 
 
 //LOGOUT
