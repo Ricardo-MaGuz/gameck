@@ -16,12 +16,6 @@ router.get('/dashboard', (req, res, next) => {
   res.render(`dashboard/${role}`);
 });
 
-router.get('/admin', (req, res, next) => {
-  const { role } = req.user;
-
-  res.render(`admin'/${role}`);
-});
-
 router.get('/games', (req, res, next) => {
   Game.find()
   .sort({ createdAt: -1 })
