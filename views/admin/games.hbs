@@ -4,12 +4,6 @@
 
 {{#each games as |game|}}
 
-<<<<<<< HEAD
-<div id="games">
-    {{#each games as | game | }}
-    <p>{{game.title}}</p>
-    <a href="/admin/games/delete/{{game._id}}">
-=======
 <div class="card" style="width: 30%; margin: 20px;">
     <div class="card-image waves-effect waves-block waves-light">
         <a href= "/games/{{game._id}}">
@@ -25,7 +19,6 @@
 
     <div class="buttons">
       <a href="/admin/games/delete/{{game._id}}">
->>>>>>> gabriela
       <button>Delete game</button>
     </a>
     <a href="/admin/games/edit/{{game._id}}">

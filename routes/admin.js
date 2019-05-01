@@ -4,6 +4,12 @@ const Game = require('../models/Game')
 
 router.get('/admin/index', (req, res, next) => res.render('admin/index'))
 
+router.get('/admin', (req, res, next) => {
+  const { role } = req.user;
+
+  res.render(`admin/${role}`);
+});
+
 //CRUD GAMES
 //READ
 router.get('/admin/games', (req, res, next) => {
