@@ -1,0 +1,9 @@
+<h1>Welcome, {{loggedUser.name}}</h1>
+<h3>{{loggedUser.role}}</h3>
+  <div id="artists">
+    {{#each users as |user| }}
+    <p>{{user.name}}</p>
+    </a>
+    {{/each}}
+  </div>
+  <a href="/admin/games">Admin Games</a>
