@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const passport = require('../handlers/passport')
 const User = require('../models/User')
-//const { isLogged } = require('../handlers/middlewares')
+const { isLogged, isAdmin} = require('../handlers/middlewares')
 
 
 //SIGNUP 
@@ -37,10 +37,7 @@ router.post('/login', (req, res, next) => {
     })
   })(req, res, next)
 })
-//router.post('/login', passport.authenticate('local', {
- // successRedirect: '/dashboard',
-  //failureRedirect: 'index'
-//}))
+
 
 //LOGOUT
 router.get('/logout', (req, res, next) => {

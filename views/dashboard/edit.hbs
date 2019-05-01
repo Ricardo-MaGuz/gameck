@@ -1,0 +1,10 @@
+<div id="update-user">
+    <form action="/dashboard/edit/{{user._id}}" method="POST">
+      <input type="text" name="name" value="{{user.name}}" />
+      <select name="role" id="role">
+        <option value="Gamer">Gamer</option>
+        <option value="Hacker">Hacker</option>
+      </select>
+      <input type="submit" value="Edit User">
+    </form>
+  </div>

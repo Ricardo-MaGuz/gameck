@@ -16,7 +16,7 @@
 
 
 <div id="games">
-    {{#each games as |game|}}
+    {{#each games as | game | }}
     <p>{{game.title}}</p>
     <a href="/admin/games/delete/{{game._id}}">
       <button>Delete game</button>
