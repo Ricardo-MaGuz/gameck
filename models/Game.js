@@ -8,8 +8,7 @@ const gameSchema = new mongoose.Schema(
 		},
 		genre: {
             type: String,
-            enum: ["Endless Runner", "Music", "Arcade", "Puzzle", "Beat'em Up", "Educational", "Rythm", "Platformer", 
-            "Shoot'em Up", "Shooter", "Action", "Brick Breaker", "Action", "Turn Based Strategy", "Racing"]
+            enum: ["Endless Runner", "Music", "Arcade", "Puzzle", "Platform", "Turn Base Strategy", "Shooter", "Dodging", "Shoot em up", "Action", "Brick Breaker", "Racing"]
         },
 		description: String, 
         createdBy: String,

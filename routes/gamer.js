@@ -4,14 +4,14 @@ const Game = require('../models/Game')
 
 router.get('/gamer/index', (req, res, next) => res.render('gamer/index'))
 
-router.get('/gamer/games', (req, res, next) => {
-  Game.find()
+/*router.get('/gamer/games', (req, res, next) => {
+  User.findById(id)
     .sort({createdAt: -1})
     .then(games => {
       res.render('gamer/games', { games })
     })
     .catch(err => next(err))
-})
+})*/
 
 
 router.get('/gamer/user/edit/:id', (req, res, next) => {

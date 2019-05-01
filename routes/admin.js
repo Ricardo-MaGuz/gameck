@@ -5,6 +5,7 @@ const Game = require('../models/Game')
 router.get('/admin/index', (req, res, next) => res.render('admin/index'))
 
 //CRUD GAMES
+//READ
 router.get('/admin/games', (req, res, next) => {
   Game.find()
     .sort({createdAt: -1})
@@ -13,13 +14,13 @@ router.get('/admin/games', (req, res, next) => {
     })
     .catch(err => next(err))
 })
-
+//CREATE
 router.post('/admin/games/create', (req, res, next) => {
   Game.create({...req.body})
   .then(() => res.redirect('/admin/games'))
   .catch(err => next(err))
 })
-
+//UPDATE
 router.get('/admin/games/edit/:id', (req, res, next) => {
   const { id } = req.params
   Game.findById(id)
@@ -52,7 +53,7 @@ router.post('/admin/games/edit/:id', (req, res, next) => {
       res.send(err)
     })
 })
-
+//DELETE
 router.get('/admin/games/delete/:id', (req, res, next) => {
   const { id } = req.params
   Game.findByIdAndDelete(id)
@@ -72,7 +73,7 @@ router.get('/admin/users', (req, res, next) => {
     .catch(err => next(err))
 })
 
-//EDIT
+//UPDATE
 router.get('/admin/users/edit/:id', (req, res, next) => {
   const { id } = req.params
   User.findById(id)

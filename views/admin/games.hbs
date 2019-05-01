@@ -1,28 +1,31 @@
-<h1>Games</h1>
+<div style ="display: flex; flex-wrap: wrap;">
 
-  <div id="create-game">
-    <form action="/admin/games/create" method="POST">
-      <input type="text" name="title" placeholder="Game Title" />
-      <select name="genre" id="genre">
-        <option value="Endless Runner">Endless Runner</option>
-        <option value="Shoot'em up">Shoot'em up</option>
-      </select>
-      <textarea name="description" id="description" cols="30" rows="10" placeholder="Game Description"></textarea>
-      <input type="text" name="createdBy" placeholder="Creator" />
-      <input type="text" name="gameSource" placeholder="Game URL" />
-      <input type="submit" value="Create Game">
-    </form>
-  </div>
+<h1> GAMES </h1>
 
+{{#each games as |game|}}
 
-<div id="games">
-    {{#each games as |game|}}
-    <p>{{game.title}}</p>
-    <a href="/admin/games/delete/{{game._id}}">
+<div class="card" style="width: 30%; margin: 20px;">
+    <div class="card-image waves-effect waves-block waves-light">
+        <a href= "/games/{{game._id}}">
+        <img class = "activator" src = "{{game.image}}" alt= "{{game.title}}" width="200px"/>
+        </a>
+    </div>
+
+    <div class="card-content">
+        <a href= '/games/{{game._id}}'>
+        <span class="card-title grey-text text-darken-4">{{game.title}}</span>
+        </a>
+    </div>
+
+    <div class="buttons">
+      <a href="/admin/games/delete/{{game._id}}">
       <button>Delete game</button>
     </a>
     <a href="/admin/games/edit/{{game._id}}">
       <button>Edit game</button>
-    </a>
-    {{/each}}
+    </div>
+</div>
+
+{{/each}}
+
 </div>

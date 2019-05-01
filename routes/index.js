@@ -19,7 +19,7 @@ router.get('/dashboard', (req, res, next) => {
 router.get('/admin', (req, res, next) => {
   const { role } = req.user;
 
-  res.render('admin');
+  res.render(`admin'/${role}`);
 });
 
 router.get('/games', (req, res, next) => {
