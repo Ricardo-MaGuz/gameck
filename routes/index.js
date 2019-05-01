@@ -19,7 +19,11 @@ router.get('/dashboard', (req, res, next) => {
 router.get('/admin', (req, res, next) => {
   const { role } = req.user;
 
+<<<<<<< HEAD
   res.render('admin/${role}`');
+=======
+  res.render(`admin'/${role}`);
+>>>>>>> gabriela
 });
 
 router.get('/games', (req, res, next) => {
