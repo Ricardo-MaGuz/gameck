@@ -10,7 +10,7 @@ const logger       = require('morgan');
 const path         = require('path');
 const passport     = require('./handlers/passport')
 const session      = require('express-session')
-const {isLogged} = require('./handlers/middlewares')
+const {isLogged, isAdmin} = require('./handlers/middlewares')
 
 
 mongoose
@@ -72,7 +72,7 @@ const admin = require('./routes/admin');
 app.use('/', admin);
 app.use('/', auth);
 app.use('/', index);
-app.use('/', isLogged)
+app.use('/', isLogged, isAdmin, admin)
 
 
 

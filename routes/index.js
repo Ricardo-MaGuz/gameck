@@ -35,6 +35,7 @@ router.get('/games/:id', (req, res, next) => {
   const {id} = req.params
   const findGames= Game.findById(id)
   .sort({createdAt: -1})
+  Promise(findGames)
   .then(response => {
     res.render('games/detail', {
       game: response[0]

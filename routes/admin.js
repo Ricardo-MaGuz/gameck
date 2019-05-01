@@ -1,5 +1,4 @@
 const router = require('express').Router()
-const mongoose = require('mongoose')
 const User = require('../models/User')
 const Game = require('../models/Game')
 
@@ -30,13 +29,23 @@ router.get('/admin/games/edit/:id', (req, res, next) => {
       console.log(err)
     })
 })
+router.get('/admin/games/game-details/:id', (req,res) => {
+  const {id} = req.params
+  Game.findById(id)
+  .then(game => {
+    res.render('admin/games/game-details', {game})
+  })
+  .catch(err => { 
+    res.send(err)
+  })
+})
 
 router.post('/admin/games/edit/:id', (req, res, next) => {
   const { id } = req.params
   Game.findByIdAndUpdate(id, { $set: { ...req.body } }, { new: true })
     .then(game => {
       console.log(game)
-      res.redirect(`/games/${game._id}`)
+      res.redirect(`/admin/games/game-details/${id}`)
     })
     .catch(err => {
       res.send(err)
