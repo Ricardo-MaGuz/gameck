@@ -12,8 +12,10 @@ const gameSchema = new mongoose.Schema(
             "Shoot'em Up", "Shooter", "Action", "Brick Breaker", "Action", "Turn Based Strategy", "Racing"]
         },
 		description: String, 
-        createdBy: String,
-        gameSource: String,
+		createdBy: String,
+		gameSource: String,
+		thumbnail: String,
+		cover: String,
 	},
 	{
 		timestamps: true,
