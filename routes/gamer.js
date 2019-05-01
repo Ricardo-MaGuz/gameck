@@ -34,7 +34,7 @@ router.post('/dashboard/edit/:id', (req, res, next) => {
   User.findByIdAndUpdate(id, { $set: { ...req.body } }, { new: true })
     .then(user => {
       console.log(user)
-      res.redirect(`/dashboard/`)
+      res.redirect(`/dashboard/${id}`)
     })
     .catch(err => {
       res.send(err)
