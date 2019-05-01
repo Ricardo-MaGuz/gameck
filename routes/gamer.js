@@ -13,6 +13,12 @@ router.get('/gamer/index', (req, res, next) => res.render('gamer/index'))
     .catch(err => next(err))
 })*/
 
+router.post('dashboard/games/edit/:id', isLoggedIn, (req,res, next)=>{
+  Games.findOneAndUpdate({gamer:req.gamer.id}, {$push:{favoriteGames:req.body.gameId}})
+  .then(game => {
+    res.redirect('/dashboard/games', game)
+  })
+  })
 
 router.get('/gamer/user/edit/:id', (req, res, next) => {
   const { id } = req.params
