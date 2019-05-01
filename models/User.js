@@ -35,7 +35,10 @@ const userSchema = new mongoose.Schema(
 			ref: 'Game'
 		}
 	],
-	photoURL: String,
+	photoURL: {
+		type: String,
+		default:"/images/default.jpg"
+	}
 	}
 )
 
