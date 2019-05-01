@@ -1,0 +1,13 @@
+<h1>Users</h1>
+
+<div id="users">
+    {{#each users as |user|}}
+    <p>{{user.name}}</p>
+    <a href="/admin/users/delete/{{user._id}}">
+      <button>Delete user</button>
+    </a>
+    <a href="/admin/users/edit/{{user._id}}">
+      <button>Edit user</button>
+    </a>
+    {{/each}}
+</div>

@@ -4,6 +4,7 @@ const Game = require('../models/Game')
 
 router.get('/admin/index', (req, res, next) => res.render('admin/index'))
 
+//CRUD GAMES
 router.get('/admin/games', (req, res, next) => {
   Game.find()
     .sort({createdAt: -1})
@@ -59,6 +60,9 @@ router.get('/admin/games/delete/:id', (req, res, next) => {
   .catch(err => next(err))
 })
 
+
+//CRUD USERS
+//READ
 router.get('/admin/users', (req, res, next) => {
   User.find()
     .sort({ createdAt: -1 })
@@ -68,6 +72,41 @@ router.get('/admin/users', (req, res, next) => {
     .catch(err => next(err))
 })
 
+//EDIT
+router.get('/admin/users/edit/:id', (req, res, next) => {
+  const { id } = req.params
+  User.findById(id)
+    .then(user => {
+      res.render('admin/users/edit', {user})
+    })
+    .catch(err => {
+      console.log(err)
+    })
+})
+router.get('/admin/users/user-details/:id', (req,res) => {
+  const {id} = req.params
+  User.findById(id)
+  .then(user => {
+    res.render('admin/users/user-details', {user})
+  })
+  .catch(err => { 
+    res.send(err)
+  })
+})
+
+router.post('/admin/users/edit/:id', (req, res, next) => {
+  const { id } = req.params
+  User.findByIdAndUpdate(id, { $set: { ...req.body } }, { new: true })
+    .then(user => {
+      console.log(user)
+      res.redirect(`/admin/users/user-details/${id}`)
+    })
+    .catch(err => {
+      res.send(err)
+    })
+})
+
+//DELETE
 router.get('/admin/users/delete/:id', (req, res, next) => {
   const { id } = req.params
   User.findByIdAndDelete(id)

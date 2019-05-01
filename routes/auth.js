@@ -37,10 +37,10 @@ router.post('/login', (req, res, next) => {
     })
   })(req, res, next)
 })
-// router.post('/login', passport.authenticate('local', {
-//   successRedirect: '/dashboard',
-//   failureRedirect: 'index'
-// }))
+//router.post('/login', passport.authenticate('local', {
+ // successRedirect: '/dashboard',
+  //failureRedirect: 'index'
+//}))
 
 //LOGOUT
 router.get('/logout', (req, res, next) => {
