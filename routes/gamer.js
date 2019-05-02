@@ -3,19 +3,20 @@ const User = require('../models/User')
 const Game = require('../models/Game')
 const { isLogged} = require('../handlers/middlewares')
 
-router.get('/dashboard', (req, res, next) => res.render('dashboard/Gamer'))
 
 //CRUD USERS
 
-//READ
-router.get('/dashboard/', (req, res, next) => {
-  Game.find()
-    .sort({createdAt: -1})
-    .then(games => {
-      res.render('dashboard/Gamer', { games })
+//READ USER
+  router.get('/dashboard', (req, res) => {
+    User.findByIdAndUpdate(req.user._id)
+    .populate('favoriteGames')
+    .then(user => {
+      console.log(user)
+      res.render('dashboard/Gamer', user)
     })
-    .catch(err => next(err))
-})
+  })
+
+//READ GAMES 
 
 router.get('/dashboard/games', (req, res, next) => {
   Game.find()
@@ -26,7 +27,7 @@ router.get('/dashboard/games', (req, res, next) => {
     .catch(err => next(err))
 })
 
-//EDIT
+//EDIT USER
 router.get('/dashboard/edit/:id', (req, res, next) => {
   const { id } = req.params
   User.findById(id)
@@ -61,7 +62,7 @@ router.post('/dashboard/edit/:id', (req, res, next) => {
     })
 })
 
-//DELETE
+//DELETE USER
 router.get('/dashboard/delete/:id', (req, res, next) => {
   const { id } = req.params
   User.findByIdAndDelete(id)
@@ -69,20 +70,25 @@ router.get('/dashboard/delete/:id', (req, res, next) => {
   .catch(err => next(err))
 })
 
+//DELETE FAVORITE GAMES
+router.get('/dashboard', (req, res, next) => {
+  User.findByIdAndUpdate(req.user.id)
+  .remove('favoriteGames')
+  .then(() => res.redirect('/dashboard'))
+  .catch(err => next(err))
+})
+
+
 // ADD GAMES TO FAVORITES
 
 router.get('/dashboard/games', (req, res) => {
   res.render('/dashboard/games')
 })
 
-router.get('/dashboard/games', (req, res) => {
-  res.render('/dashboard/games')
-})
 
 router.post('/dashboard/games/:id', (req, res, next) => {
   let {id} = req.params
   User.findByIdAndUpdate(req.user._id, {$push: {favoriteGames: id}}, {new: true})
-    .populate(games)
     .then(user => res.render('dashboard/Gamer'))
     .catch(err => res.send(err))
 })

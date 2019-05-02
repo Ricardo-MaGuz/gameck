@@ -9,10 +9,11 @@ router.get('/games', (req, res, next) => {
   res.render('games');
 });
 
-router.get('/dashboard', (req, res, next) => {
-  const { role } = req.user;
 
-  res.render(`dashboard/${role}`);
+router.get('/dashboard', (req, res, next) => {
+  /*const { role } = req.user;
+
+  res.render(`dashboard/${role}`);*/
 });
 
 router.get('/games', (req, res, next) => {

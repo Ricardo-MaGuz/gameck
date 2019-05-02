@@ -12,7 +12,7 @@
 <br>
 <h1> GAMES </h1>
 
-{{#each games as |game|}}
+{{#each favoriteGames as |game|}}
 <div class="card" style="width: 30%; margin: 20px;">
     <div class="card-image waves-effect waves-block waves-light">
         <a href= "/games/{{game._id}}">
@@ -27,8 +27,8 @@
     </div>
 
     <div class="buttons">
-      <form action="/dashboard/games/{{game._id}}" method="POST">
-        <button type="submit">Add to favorites</button>
+      <form action="/dashboard/delete/{{game._id}}" method="POST">
+        <button type="submit">Delete from favorites</button>
       </form> 
     </div>
 </div>
