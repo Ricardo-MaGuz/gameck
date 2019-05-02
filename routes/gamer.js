@@ -52,13 +52,13 @@ router.get('/dashboard/edit/:id', (req,res) => {
 router.post('/dashboard/edit/:id', (req, res, next) => {
   const { id } = req.params
   User.findByIdAndUpdate(id, { $set: { ...req.body } }, { new: true })
-  .then(user => {
-    console.log(user)
-    res.redirect(`/dashboard/`)
-  })
-  .catch(err => {
-    res.send(err)
-  })
+    .then(user => {
+      console.log(user)
+      res.redirect(`/dashboard/${id}`)
+    })
+    .catch(err => {
+      res.send(err)
+    })
 })
 
 //DELETE

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const Game = require('../models/Game')
 /* GET home page */
 router.get('/', (req, res, next) => {
   res.render('index');
@@ -8,7 +8,6 @@ router.get('/', (req, res, next) => {
 router.get('/games', (req, res, next) => {
   res.render('games');
 });
-
 
 router.get('/dashboard', (req, res, next) => {
   const { role } = req.user;

@@ -1,10 +1,38 @@
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/images/logo.jpg">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-end">
+      <a class="navbar-item">Donate</a>
+      <a class="navbar-item">Become a Hacker</a>
+       <a class="navbar-item">Games</a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-info is-outlined">
+            <strong>Log out</strong>
+          </a>
+          <a class="button is-info">
+            Donate
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
 <h1>Welcome, {{loggedUser.name}}</h1>
 <h3>{{loggedUser.role}}</h3>
-  <div id="artists">
-    {{#each users as |user| }}
-    <p>{{user.name}}</p>
-    </a>
-    {{/each}}
-  </div>
   <a href="/admin/games">Admin Games</a>
   <a href="/admin/users">Admin users</a>
