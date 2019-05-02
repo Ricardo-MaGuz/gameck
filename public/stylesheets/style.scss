@@ -107,9 +107,9 @@ button[type=submit]{
 #hero-btn:hover a {
   color: #2D3142;
 }
-/* Donate Button */
+/* Donate & JoinButton */
 
-#donate-btn {
+#donate-btn , #join-btn{
   position: relative;
   overflow: hidden;
   margin: 0 auto;
@@ -118,7 +118,7 @@ button[type=submit]{
   display: flex;
 }
 
-#donate-btn a {
+#donate-btn a, #join-btn a {
   position: relative;
   transition: all .35s ease-Out;
   color: #fff;
@@ -136,13 +136,13 @@ button[type=submit]{
   bottom: 0;
 }
 
-#donate-btn:hover #slide {
+#donate-btn:hover #slide, #join-btn:hover #slide  {
   left: 0;
 }
-#donate-btn:hover{
+#donate-btn:hover, #join-btn:hover{
   border: solid 3px white;
 }
-#donate-btn:hover a {
+#donate-btn:hover a, #join-btn:hover a {
   color: #d18b3f;
 }
 //Header Styles
@@ -210,6 +210,27 @@ padding: 1rem 0;
 .hide{
   display: none;
 }
+.fade-out{
+  animation: fade-out 1s ease-in-out;
+}
+@keyframes fade-in {
+  0% {
+  opacity: 0;
+  } 
+  100%{
+    opacity: 100;
+  }
+ }
+ @keyframes fade-out {
+  0% {
+  opacity: 100;
+  display: block;
+  } 
+  100%{
+    opacity: 0;
+    display: none;
+  }
+ }
 //Game-list
 #landing-games{
   padding: 2rem;

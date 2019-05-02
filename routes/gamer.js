@@ -82,7 +82,6 @@ router.get('/dashboard/games', (req, res) => {
 router.post('/dashboard/games/:id', (req, res, next) => {
   let {id} = req.params
   User.findByIdAndUpdate(req.user._id, {$push: {favoriteGames: id}}, {new: true})
-    .populate(games)
     .then(user => res.render('dashboard/Gamer'))
     .catch(err => res.send(err))
 })
