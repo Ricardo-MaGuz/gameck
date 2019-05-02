@@ -1,2 +1,25 @@
 <h1>Welcome, {{loggedUser.name}}</h1>
 <h3>{{loggedUser.role}}</h3>
+
+
+<h1> GAMES </h1>
+
+{{#each games as |game|}}
+
+<div class="card" style="width: 30%; margin: 20px;">
+    <div class="card-image waves-effect waves-block waves-light">
+        <a href= "/games/{{game._id}}">
+        <img class = "activator" src = "{{game.image}}" alt= "{{game.title}}" width="200px"/>
+        </a>
+    </div>
+
+    <div class="card-content">
+        <a href= '/games/{{game._id}}'>
+        <span class="card-title grey-text text-darken-4">{{game.title}}</span>
+        </a>
+    </div>
+</div>
+
+{{/each}}
+
+</div>
