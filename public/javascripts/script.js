@@ -71,11 +71,13 @@ signUpLightBox.addEventListener("click",function() {
   signUpLightBox.classList.add("fade-out")
   setTimeout(function(){
     signUpLightBox.classList.add("hide")
+    signUpLightBox.classList.remove("fade-out")
   },500);
 })
 logInLightBox.addEventListener("click",function() {
   logInLightBox.classList.add("fade-out")
   setTimeout(function(){
     logInLightBox.classList.add("hide")
+    signUpLightBox.classList.remove("fade-out")
   },500);
 })

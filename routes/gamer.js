@@ -11,7 +11,7 @@ const { isLogged} = require('../handlers/middlewares')
     User.findByIdAndUpdate(req.user._id)
     .populate('favoriteGames')
     .then(user => {
-      console.log(user)
+      // console.log(user)
       res.render('dashboard/Gamer', user)
     })
   })
@@ -28,16 +28,16 @@ router.get('/dashboard/games', (req, res, next) => {
 })
 
 //EDIT USER
-router.get('/dashboard/edit/:id', (req, res, next) => {
-  const { id } = req.params
-  User.findById(id)
-  .then(user => {
-    res.render('dashboard/edit', {user})
-  })
-  .catch(err => {
-    console.log(err)
-  })
-})
+// router.get('/dashboard/edit/:id', (req, res, next) => {
+//   const { id } = req.params
+//   User.findById(id)
+//   .then(user => {
+//     res.render('dashboard/edit', {user})
+//   })
+//   .catch(err => {
+//     console.log(err)
+//   })
+// })
 
 router.get('/dashboard/edit/:id', (req,res) => {
   const {id} = req.params
@@ -54,7 +54,7 @@ router.post('/dashboard/edit/:id', (req, res, next) => {
   const { id } = req.params
   User.findByIdAndUpdate(id, { $set: { ...req.body } }, { new: true })
     .then(user => {
-      console.log(user)
+      // console.log(user)
       res.redirect(`/dashboard/${id}`)
     })
     .catch(err => {
@@ -71,10 +71,12 @@ router.get('/dashboard/delete/:id', (req, res, next) => {
 })
 
 //DELETE FAVORITE GAMES
-router.get('/dashboard', (req, res, next) => {
-  User.findByIdAndUpdate(req.user.id)
-  .remove('favoriteGames')
-  .then(() => res.redirect('/dashboard'))
+router.post('/dashboard/deleteFav/:id', (req, res, next) => {
+  const {id} = req.params
+  User.findByIdAndUpdate(req.user._id, { $pull: { favoriteGames: { $in: [id] } } }, {new: true})
+  .then(user => {
+    console.log("ndo por aquí", user)
+    res.redirect('/dashboard')})
   .catch(err => next(err))
 })
 
