@@ -2,8 +2,18 @@
     <form action="/admin/games/edit/{{game._id}}" method="POST">
       <input type="text" name="title" value="{{game.title}}" />
       <select name="genre" id="genre">
+        <option value="Action">Action</option>
+        <option value="Arcade">Arcade</option>
+        <option value="Brick Breaker">Brick breaker</option>
+        <option value="Dodging">Dodging</option>
         <option value="Endless Runner">Endless Runner</option>
+        <option value="Music">Music</option>
+        <option value="Platform">Platform</option>
+        <option value="Puzzle">Puzzle</option>
+        <option value="Racing">Racing</option>
         <option value="Shoot'em up">Shoot'em up</option>
+        <option value="Shooter">Shooter</option>
+        <option value="Turn Base Strategy">Turn Base Strategy</option>
       </select>
       <textarea name="description" id="description" cols="30" rows="10" placeholder="Game Description">{{game.description}}</textarea>
       <input type="text" name="createdBy" value="{{game.createdBy}}" />

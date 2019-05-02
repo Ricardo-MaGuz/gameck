@@ -7,6 +7,25 @@ router.get('/dashboard', (req, res, next) => res.render('dashboard/Gamer'))
 
 //CRUD USERS
 
+//READ
+router.get('/dashboard/', (req, res, next) => {
+  Game.find()
+    .sort({createdAt: -1})
+    .then(games => {
+      res.render('dashboard/Gamer', { games })
+    })
+    .catch(err => next(err))
+})
+
+router.get('/dashboard/games', (req, res, next) => {
+  Game.find()
+    .sort({createdAt: -1})
+    .then(games => {
+      res.render('dashboard/games', { games })
+    })
+    .catch(err => next(err))
+})
+
 //EDIT
 router.get('/dashboard/edit/:id', (req, res, next) => {
   const { id } = req.params
@@ -52,19 +71,20 @@ router.get('/dashboard/delete/:id', (req, res, next) => {
 
 // ADD GAMES TO FAVORITES
 
-router.get('/dashboard/gamer', (req, res) => {
-  res.render('/dashboard/gamer')
+router.get('/dashboard/games', (req, res) => {
+  res.render('/dashboard/games')
 })
 
-router.post('/dashboard/gamer', (req, res, next) => {
-  Game.create({...req.body})
-  .then((newGame) => 
-    Game.findOneAndUpdate({user: user.id},{$push:{favoriteGames: newGame}},{new:true})
-    .populate('games')
-    .then(() => {
-      res.redirect('/dashboard/gamer')
-    })
+router.get('/dashboard/games', (req, res) => {
+  res.render('/dashboard/games')
+})
+
+router.post('/dashboard/games/:id', (req, res, next) => {
+  let {id} = req.params
+  User.findByIdAndUpdate(req.user._id, {$push: {favoriteGames: id}}, {new: true})
+    .populate(games)
+    .then(user => res.render('dashboard/Gamer'))
     .catch(err => res.send(err))
-)})
+})
 
 module.exports = router
