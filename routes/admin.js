@@ -1,10 +1,10 @@
 const router = require('express').Router()
 const User = require('../models/User')
 const Game = require('../models/Game')
-
+const {isLogged, isAdmin} = require('../handlers/middlewares')
 router.get('/admin/index', (req, res, next) => res.render('admin/index'))
 
-router.get('/admin', (req, res, next) => {
+router.get('/admin', isAdmin, (req, res, next) => {
   const { role } = req.user;
 
   res.render(`admin/${role}`);
@@ -12,7 +12,7 @@ router.get('/admin', (req, res, next) => {
 
 //CRUD GAMES
 //READ
-router.get('/admin/games', (req, res, next) => {
+router.get('/admin/games', isAdmin, (req, res, next) => {
   Game.find()
     .sort({createdAt: -1})
     .then(games => {
@@ -21,13 +21,13 @@ router.get('/admin/games', (req, res, next) => {
     .catch(err => next(err))
 })
 //CREATE
-router.post('/admin/games/create', (req, res, next) => {
+router.post('/admin/games/create', isAdmin, (req, res, next) => {
   Game.create({...req.body})
   .then(() => res.redirect('/admin/games'))
   .catch(err => next(err))
 })
 //UPDATE
-router.get('/admin/games/edit/:id', (req, res, next) => {
+router.get('/admin/games/edit/:id', isAdmin, (req, res, next) => {
   const { id } = req.params
   Game.findById(id)
     .then(game => {
@@ -70,7 +70,7 @@ router.get('/admin/games/delete/:id', (req, res, next) => {
 
 //CRUD USERS
 //READ
-router.get('/admin/users', (req, res, next) => {
+router.get('/admin/users', isAdmin, (req, res, next) => {
   User.find()
     .sort({ createdAt: -1 })
     .then(users => {

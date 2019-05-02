@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Game = require('../models/Game')
+require('dotenv').config();
 
 const games= [
     {
@@ -302,7 +303,7 @@ const games= [
 ]
 
 mongoose
-.connect('mongodb://localhost/gameck')
+.connect(process.env.DB)
 .then(() => {
   Game.create(games)
   .then(games => {
