@@ -277,4 +277,8 @@ footer p {
 .navbar.is-fixed-top {
   z-index: 1000; }
 
+iframe {
+  width: 100vw;
+  height: 100vh; }
+
 /*# sourceMappingURL=style.css.map */

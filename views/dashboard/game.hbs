@@ -1,0 +1,20 @@
+
+<h1> GAMES </h1>
+
+<div class="card" style="width: 30%; margin: 20px;">
+    <div class="card-image waves-effect waves-block waves-light">
+        <img class = "activator" src = "{{game.image}}" alt= "{{game.title}}" width="200px"/>
+    </div>
+
+    <div class="card-content">
+        <a href= '/games/{{game._id}}'>
+        <span class="card-title grey-text text-darken-4">{{game.title}}</span>
+        </a>
+    </div>
+  <a href="/game/play/{{game._id}}">Play!</a>
+    <div class="buttons">
+      <form action="/dashboard/games/{{game._id}}" method="POST">
+        <button type="submit">Add to favorites</button>
+      </form> 
+    </div>
+</div>

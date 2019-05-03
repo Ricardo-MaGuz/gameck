@@ -5,13 +5,13 @@
 {{#each games as |game|}}
 <div class="card" style="width: 30%; margin: 20px;">
     <div class="card-image waves-effect waves-block waves-light">
-        <a href= "/games/{{game._id}}">
+        <a href= "/games/game/{{game._id}}">
         <img class = "activator" src = "{{game.image}}" alt= "{{game.title}}" width="200px"/>
         </a>
     </div>
 
     <div class="card-content">
-        <a href= '/games/{{game._id}}'>
+        <a href= '/games/game/{{game._id}}'>
         <span class="card-title grey-text text-darken-4">{{game.title}}</span>
         </a>
     </div>

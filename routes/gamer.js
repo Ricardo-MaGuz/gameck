@@ -26,6 +26,27 @@ router.get('/dashboard/games', (req, res, next) => {
     })
     .catch(err => next(err))
 })
+router.get('/games/game/:id', (req,res) => {
+  const {id} = req.params
+  Game.findById(id)
+  .then(game => {
+    res.render('dashboard/game', {game})
+  })
+  .catch(err => { 
+    res.send(err)
+  })
+})
+
+router.get('/game/play/:id', (req,res) => {
+  const {id} = req.params
+  Game.findById(id)
+  .then(game => {
+    res.render('dashboard/play', {game})
+  })
+  .catch(err => { 
+    res.send(err)
+  })
+})
 
 router.get('/dashboard/edit/:id', (req,res) => {
   const {id} = req.params
