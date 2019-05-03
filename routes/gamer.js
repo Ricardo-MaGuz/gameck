@@ -93,16 +93,11 @@ router.get('/dashboard/games',isLogged, (req, res) => {
   res.render('/dashboard/games')
 })
 
-<<<<<<< HEAD
 
 router.post('/dashboard/games/:id',isLogged, (req, res, next) => {
-=======
-router.post('/dashboard/games/:id', (req, res, next) => {
->>>>>>> fab80ef9e1ec343fb4e16992fc2722fd1723201a
   let {id} = req.params
   User.findByIdAndUpdate(req.user._id, {$addToSet: {favoriteGames: id}}, {new: true})
   .then(user => {
-    console.log("ndo por aquí", user)
     res.render('dashboard/Gamer')
     res.redirect('/dashboard')})
     //.then(user => res.render('dashboard/Gamer'))

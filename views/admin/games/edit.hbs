@@ -1,7 +1,66 @@
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/images/logo.jpg">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-end">
+      <a class="navbar-item">Donate</a>
+      <a class="navbar-item">Become a Hacker</a>
+       <a class="navbar-item">Games</a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-info is-outlined">
+            <strong>Log out</strong>
+          </a>
+          <a class="button is-info">
+            Donate
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="container">
+    <h1>Welcome, {{loggedUser.name}}</h1>
+    <h3>Edit {{game.title}}</h3>
+  </div>
+</header>
+
+<div id="gamer-profile" class="container">
+  <figure><img src="{{loggedUser.photoURL}}" alt=""></figure>
+</div>
+
+<div id="gamer-profile" class="container">
+  <h2><i class="fas fa-award"></i>&nbsp;Fill in the blanks to edit game</h2>
+
+<div id="container-form" class="container">
 <div id="create-game">
-    <form action="/admin/games/edit/{{game._id}}" method="POST">
-      <input type="text" name="title" value="{{game.title}}" />
+  <form class="col s6 offset-s3" action="/admin/games/edit/{{game._id}}" method="POST">
+  <div class="field">
+  <label class="label">Title</label>
+  <input class="input" type="text" name="title" placeholder="Title" value="{{game.title}}">
+</div>
+
+<div class="field">
+  <label class="label">Genre</label>
+  <div class="control">
+    <div class="select">
       <select name="genre" id="genre">
+        <option>Select dropdown</option>
         <option value="Action">Action</option>
         <option value="Arcade">Arcade</option>
         <option value="Brick Breaker">Brick breaker</option>
@@ -15,9 +74,37 @@
         <option value="Shooter">Shooter</option>
         <option value="Turn Base Strategy">Turn Base Strategy</option>
       </select>
-      <textarea name="description" id="description" cols="30" rows="10" placeholder="Game Description">{{game.description}}</textarea>
-      <input type="text" name="createdBy" value="{{game.createdBy}}" />
-      <input type="text" name="gameSource" value="{{game.gameSource}}" />
-      <input type="submit" value="Edit Game">
-    </form>
+    </div>
   </div>
+</div>
+
+<div class="field">
+  <label class="label">Description</label>
+  <div class="control">
+    <textarea class="textarea" name="description" id="description"placeholder="Game Description" value="{{game.description}}"></textarea>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Created By</label>
+  <div class="control">
+    <input class="input" type="text" name="createdBy" placeholder="Created By" value="{{game.createdBy}}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Source</label>
+  <div class="control">
+    <input class="input" type="text" name="gameSource" placeholder="Game Source" value="{{game.gameSource}}" />
+  </div>
+</div>
+
+<div class="field is-grouped">
+  <div class="control">
+    <button type="submit" value="Edit Game" class="button is-info">Edit Game</button>
+  </div>
+</div>
+</form>
+</div>
+</div>
+</div>

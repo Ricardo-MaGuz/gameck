@@ -20,11 +20,16 @@ router.get('/admin/games', isAdmin, (req, res, next) => {
     .catch(err => next(err))
 })
 //CREATE
+router.get('/admin/games/create', isAdmin, (req, res, next) => {
+  res.render('admin/games/create')
+})
+
 router.post('/admin/games/create', isAdmin, (req, res, next) => {
   Game.create({...req.body})
   .then(() => res.redirect('/admin/games'))
   .catch(err => next(err))
 })
+
 //UPDATE
 router.get('/admin/games/edit/:id', isAdmin, (req, res, next) => {
   const { id } = req.params
@@ -89,23 +94,13 @@ router.get('/admin/users/edit/:id', (req, res, next) => {
       console.log(err)
     })
 })
-router.get('/admin/users/user-details/:id', (req,res) => {
-  const {id} = req.params
-  User.findById(id)
-  .then(user => {
-    res.render('admin/users/user-details', {user})
-  })
-  .catch(err => { 
-    res.send(err)
-  })
-})
 
 router.post('/admin/users/edit/:id', (req, res, next) => {
   const { id } = req.params
   User.findByIdAndUpdate(id, { $set: { ...req.body } }, { new: true })
     .then(user => {
       console.log(user)
-      res.redirect(`/admin/users/user-details/${id}`)
+      res.redirect(`/admin/users/edit/${id}`)
     })
     .catch(err => {
       res.send(err)
