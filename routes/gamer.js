@@ -72,8 +72,8 @@ router.get('/dashboard/delete/:id', (req, res, next) => {
 
 //DELETE FAVORITE GAMES
 router.get('/dashboard', (req, res, next) => {
-  User.findByIdAndUpdate(req.user.id)
-  .remove('favoriteGames')
+  const { id } = req.body.user.favoriteGames.id
+  User.findByIdAndUpdate(req.user._id, {$pull: {favoriteGames: id}})
   .then(() => res.redirect('/dashboard'))
   .catch(err => next(err))
 })
@@ -84,7 +84,6 @@ router.get('/dashboard', (req, res, next) => {
 router.get('/dashboard/games', (req, res) => {
   res.render('/dashboard/games')
 })
-
 
 router.post('/dashboard/games/:id', (req, res, next) => {
   let {id} = req.params
