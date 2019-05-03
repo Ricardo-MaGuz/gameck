@@ -32,7 +32,7 @@ router.post('/login', (req, res, next) => {
     req.logIn(user, err => {
       if (err) return next(err)
       req.app.locals.loggedUser = user
-      if (req.user.role === 'Admin') return res.redirect('admin/')
+      if (req.user.role === 'Admin') return res.redirect('/admin')
       else if (req.user.role === 'Gamer') return res.redirect('/dashboard')
     })
   })(req, res, next)
