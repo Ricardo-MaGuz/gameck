@@ -1,4 +1,4 @@
-# gameck
+# Gameck
 Ironhack second project: Gameck
 
 This project is a Video Game Library made mostl by Ironhackers.
