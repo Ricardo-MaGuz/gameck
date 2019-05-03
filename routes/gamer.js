@@ -7,7 +7,7 @@ const { isLogged} = require('../handlers/middlewares')
 //CRUD USERS
 
 //READ USER
-  router.get('/dashboard', (req, res) => {
+  router.get('/dashboard',isLogged, (req, res) => {
     User.findByIdAndUpdate(req.user._id)
     .populate('favoriteGames')
     .then(user => {
@@ -18,7 +18,7 @@ const { isLogged} = require('../handlers/middlewares')
 
 //READ GAMES 
 
-router.get('/dashboard/games', (req, res, next) => {
+router.get('/dashboard/games',isLogged, (req, res, next) => {
   Game.find()
     .sort({createdAt: -1})
     .then(games => {
@@ -26,7 +26,7 @@ router.get('/dashboard/games', (req, res, next) => {
     })
     .catch(err => next(err))
 })
-router.get('/games/game/:id', (req,res) => {
+router.get('/games/game/:id',isLogged, (req,res) => {
   const {id} = req.params
   Game.findById(id)
   .then(game => {
@@ -37,7 +37,7 @@ router.get('/games/game/:id', (req,res) => {
   })
 })
 
-router.get('/games/game/play/:id', (req,res) => {
+router.get('/games/game/play/:id',isLogged, (req,res) => {
   const {id} = req.params
   Game.findById(id)
   .then(game => {
@@ -48,7 +48,7 @@ router.get('/games/game/play/:id', (req,res) => {
   })
 })
 
-router.get('/dashboard/edit/:id', (req,res) => {
+router.get('/dashboard/edit/:id',isLogged, (req,res) => {
   const {id} = req.params
   User.findById(id)
   .then(user => {
@@ -59,7 +59,7 @@ router.get('/dashboard/edit/:id', (req,res) => {
   })
 })
 
-router.post('/dashboard/edit/:id', (req, res, next) => {
+router.post('/dashboard/edit/:id',isLogged, (req, res, next) => {
   const { id } = req.params
   User.findByIdAndUpdate(id, { $set: { ...req.body } }, { new: true })
     .then(user => {
@@ -72,7 +72,7 @@ router.post('/dashboard/edit/:id', (req, res, next) => {
 })
 
 //DELETE USER
-router.get('/dashboard/delete/:id', (req, res, next) => {
+router.get('/dashboard/delete/:id',isLogged, (req, res, next) => {
   const { id } = req.params
   User.findByIdAndDelete(id)
   .then(() => res.redirect('/'))
@@ -80,7 +80,7 @@ router.get('/dashboard/delete/:id', (req, res, next) => {
 })
 
 //DELETE FAVORITE GAMES
-router.post('/dashboard/deleteFav/:id', (req, res, next) => {
+router.post('/dashboard/deleteFav/:id',isLogged, (req, res, next) => {
   const {id} = req.params
   User.findByIdAndUpdate(req.user._id, { $pull: { favoriteGames: { $in: [id] } } }, {new: true})
   .then(user => {
@@ -92,12 +92,12 @@ router.post('/dashboard/deleteFav/:id', (req, res, next) => {
 
 // ADD GAMES TO FAVORITES
 
-router.get('/dashboard/games', (req, res) => {
+router.get('/dashboard/games',isLogged, (req, res) => {
   res.render('/dashboard/games')
 })
 
 
-router.post('/dashboard/games/:id', (req, res, next) => {
+router.post('/dashboard/games/:id',isLogged, (req, res, next) => {
   let {id} = req.params
   User.findByIdAndUpdate(req.user._id, {$addToSet: {favoriteGames: id}}, {new: true})
   .then(user => {
