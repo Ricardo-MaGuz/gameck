@@ -173,11 +173,20 @@ header .container {
   background-size: contain;
   min-height: 40vh; }
 
+#profile-hero {
+  background: black;
+  padding-top: 3rem; }
+
+#profile-hero .container {
+  background: url(/images/profile-bg.jpg) center no-repeat;
+  background-size: contain; }
+
 header .body-button {
   float: right; }
 
 #gamer-profile {
-  overflow: visible; }
+  overflow: visible;
+  min-height: 5rem; }
 
 #gamer-profile figure {
   margin-top: -7rem;

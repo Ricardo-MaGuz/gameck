@@ -27,7 +27,7 @@
     </div>
   </div>
 </nav>
-<header>
+<header id="profile-hero">
   <div class="container">
     <h1>Welcome, {{loggedUser.name}}</h1>
     <h3>{{loggedUser.role}}</h3>
@@ -39,33 +39,25 @@
   <div>
     <a href="/dashboard/edit/{{loggedUser._id}}" class="button is-info">Edit Profile</a>
     <a href="/dashboard/games">Add Favorite Games</a>
-    <a href="/dashboard/delete/{{loggedUser._id}}" class="button is-danger">Delete Profile</a>
+    <a href="/dashboard/delete/{{loggedUser._id}}"  onclick="return confirm('Are you reaaaaally sure?')" class="button is-danger">Delete Profile</a>
   </div>
   <h2><i class="fas fa-star"></i>&nbsp;Favorite Games</h2>
-  {{#each favoriteGames as |game|}}
-<div class="card" style="width: 30%; margin: 20px;">
-    <div class="card-image waves-effect waves-block waves-light">
+  <section>
+      {{#each favoriteGames as |game|}}
+      <article>
+        <h3>{{game.title}}</h3>
         <a href= "/games/{{game._id}}">
-        <img class = "activator" src = "{{game.image}}" alt= "{{game.title}}" width="200px"/>
-        </a>
-    </div>
-
-    <div class="card-content">
-        <a href= '/games/{{game._id}}'>
-        <span class="card-title grey-text text-darken-4">{{game.title}}</span>
-        </a>
-    </div>
-
-    <div class="buttons">
-      <form action="/dashboard/deleteFav/{{game._id}}" method="POST">
-        <button type="submit">Delete from favorites</button>
-      </form> 
-    </div>
-</div>
-
-
-
-{{/each}}
+            <img src = "{{game.image}}" alt= "{{game.title}}" />
+          </a>
+        <div class="buttons">
+            <form action="/dashboard/deleteFav/{{game._id}}" method="POST">
+            <button type="submit">Delete from favorites</button>
+            </form> 
+          </div>
+      </article>
+          
+      {{/each}}
+  </section>
 </div>
 
 <section id="donate">

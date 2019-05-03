@@ -37,7 +37,7 @@ router.get('/games/game/:id', (req,res) => {
   })
 })
 
-router.get('/game/play/:id', (req,res) => {
+router.get('/games/game/play/:id', (req,res) => {
   const {id} = req.params
   Game.findById(id)
   .then(game => {
@@ -100,7 +100,11 @@ router.get('/dashboard/games', (req, res) => {
 router.post('/dashboard/games/:id', (req, res, next) => {
   let {id} = req.params
   User.findByIdAndUpdate(req.user._id, {$addToSet: {favoriteGames: id}}, {new: true})
-    .then(user => res.render('dashboard/Gamer'))
+  .then(user => {
+    console.log("ndo por aquí", user)
+    res.render('dashboard/Gamer')
+    res.redirect('/dashboard')})
+    //.then(user => res.render('dashboard/Gamer'))
     .catch(err => res.send(err))
 })
 

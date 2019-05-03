@@ -285,7 +285,7 @@ const games= [
         cover: "",
     },
     {
-        title: "Iron Spacheship",
+        title: "Iron Spaceship",
         genre: "Shoot em up",
         description: "Esquiva los meteoritos y junta todas las piedras preciosas que puedas. Tu compañero deberá hacer lo mismo, ¡ahora son equipo!",
         createdBy: "Gustavo Peña",
