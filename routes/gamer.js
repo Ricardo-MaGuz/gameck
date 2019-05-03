@@ -27,18 +27,6 @@ router.get('/dashboard/games', (req, res, next) => {
     .catch(err => next(err))
 })
 
-//EDIT USER
-// router.get('/dashboard/edit/:id', (req, res, next) => {
-//   const { id } = req.params
-//   User.findById(id)
-//   .then(user => {
-//     res.render('dashboard/edit', {user})
-//   })
-//   .catch(err => {
-//     console.log(err)
-//   })
-// })
-
 router.get('/dashboard/edit/:id', (req,res) => {
   const {id} = req.params
   User.findById(id)
@@ -90,7 +78,7 @@ router.get('/dashboard/games', (req, res) => {
 
 router.post('/dashboard/games/:id', (req, res, next) => {
   let {id} = req.params
-  User.findByIdAndUpdate(req.user._id, {$push: {favoriteGames: id}}, {new: true})
+  User.findByIdAndUpdate(req.user._id, {$addToSet: {favoriteGames: id}}, {new: true})
     .then(user => res.render('dashboard/Gamer'))
     .catch(err => res.send(err))
 })

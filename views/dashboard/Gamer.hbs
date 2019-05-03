@@ -12,21 +12,18 @@
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-end">
-      <a class="navbar-item">Donate</a>
-      <a class="navbar-item">Become a Hacker</a>
-       <a class="navbar-item">Games</a>
-    </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a id="sign-up-nav" class="button is-info is-outlined">
+          <a href="/logout" id="sign-up-nav" class="button is-info is-outlined">
             <strong>Log Out</strong>
           </a>
-          <a id="log-in-nav" class="button is-info">
-            Donate
-          </a>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <button type="submit"class="button is-info donate-btn">Donate</button>
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="hidden" name="hosted_button_id" value="NBQT6Q6MGG894" />
+          </form>
         </div>
       </div>
     </div>
@@ -42,8 +39,9 @@
 <div id="gamer-profile" class="container">
   <figure><img src="{{loggedUser.photoURL}}" alt=""></figure>
   <div>
-    <a href="/dashboard/edit/{{loggedUser._id}}">Edit Profile</a>
+    <a href="/dashboard/edit/{{loggedUser._id}}" class="button is-info">Edit Profile</a>
     <a href="/dashboard/games">Add Favorite Games</a>
+    <a href="/dashboard/delete/{{loggedUser._id}}" class="button is-danger">Delete Profile</a>
   </div>
   <h2><i class="fas fa-star"></i>&nbsp;Favorite Games</h2>
   {{#each favoriteGames as |game|}}
@@ -73,11 +71,16 @@
 </div>
 
 <section id="donate">
-  <div class="container">
+      <div class="container">
      <h2><i class="fas fa-beer"></i> Buy us a Beer</h2>
-    <div class="body-button" id="donate-btn">
-      <div id="slide"></div>
-      <a>Donate</a>
-    </div>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <button type="submit" class="body-button" id="donate-btn">
+          <div id="slide"></div>
+          <a>Donate</a>
+        </button>
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="NBQT6Q6MGG894" />
+      </form>
+    
   </div>
 </section>

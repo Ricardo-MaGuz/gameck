@@ -13,20 +13,14 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-end">
-      <a class="navbar-item">Donate</a>
-      <a class="navbar-item">Become a Hacker</a>
-       <a class="navbar-item">Games</a>
-    </div>
-
-    <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-info is-outlined">
-            <strong>Log out</strong>
-          </a>
-          <a class="button is-info">
-            Donate
-          </a>
+          <a href="/logout" id="sign-up-nav" class="button is-info is-outlined">Log Out</a>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <button type="submit"class="button is-info donate-btn">Donate</button>
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="hidden" name="hosted_button_id" value="NBQT6Q6MGG894" />
+          </form>
         </div>
       </div>
     </div>
@@ -36,3 +30,30 @@
 <h3>{{loggedUser.role}}</h3>
   <a href="/admin/games">Admin Games</a>
   <a href="/admin/users">Admin users</a>
+  <div id="create-game">
+    <form action="/admin/games/create" method="POST">
+      <input type="text" name="title" placeholder="{{this.title}}" />
+      <select name="genre" id="genre" >
+        <option value="Endless Runner">Endless Runner</option>
+        <option value="Shoot'em up">Shoot'em up</option>
+      </select>
+      <textarea name="description" id="description" cols="30" rows="10" placeholder="Game Description">{{this.description}}</textarea>
+      <input type="text" name="createdBy" placeholder="Creator" />
+      <input type="text" name="gameSource" placeholder="Game URL" />
+      <input type="submit" value="Creaate Game">
+    </form>
+
+    <section id="donate">
+      <div class="container">
+     <h2><i class="fas fa-beer"></i> Buy us a Beer</h2>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <button type="submit" class="body-button" id="donate-btn">
+          <div id="slide"></div>
+          <a>Donate</a>
+        </button>
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="NBQT6Q6MGG894" />
+      </form>
+    
+  </div>
+</section>

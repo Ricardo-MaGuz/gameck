@@ -9,12 +9,15 @@ body.has-navbar-fixed-top, html.has-navbar-fixed-top {
 a {
   text-decoration: none; }
 
+.navbar-item img {
+  max-height: 40px; }
+
 #log-in-lightbox, #sign-up-lightbox {
   position: fixed;
   width: 100vw;
   height: 100vh;
   z-index: 100;
-  padding-top: 10vh;
+  padding-top: 15vh;
   background: #73b7de;
   background: -moz-linear-gradient(left, #73b7de 0%, #2777a5 0%, rgba(35, 39, 54, 0.8) 100%);
   background: -webkit-gradient(left top, right top, color-stop(0%, #73b7de), color-stop(0%, #2777a5), color-stop(100%, rgba(35, 39, 54, 0.8)));
@@ -24,7 +27,7 @@ a {
   background: linear-gradient(to right, #73b7de 0%, #2777a5 0%, rgba(35, 39, 54, 0.8) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#73b7de', endColorstr='#232736', GradientType=1 ); }
 
-form {
+.home-form {
   display: block;
   position: relative;
   margin: 0 auto;
@@ -48,6 +51,15 @@ form label {
 
 button[type=submit] {
   margin-top: 30px; }
+
+.donate-btn {
+  margin-top: 0px !important; }
+
+#browse-all {
+  position: relative;
+  margin: 0 auto;
+  display: block;
+  width: 32%; }
 
 /* Button Styles */
 .body-button {
@@ -203,6 +215,9 @@ header .body-button {
   -webkit-box-shadow: 0px -11px 15px -4px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px -11px 15px -4px rgba(0, 0, 0, 0.75);
   box-shadow: 0px -11px 15px -4px rgba(0, 0, 0, 0.75); }
+
+#donate button {
+  background: transparent; }
 
 #donate h2 {
   text-align: center;

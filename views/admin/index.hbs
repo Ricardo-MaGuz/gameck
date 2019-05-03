@@ -2,3 +2,16 @@
 <h3>{{loggedUser.role}}</h3>
   <a href="/admin/games">Admin Games</a>
   <a href="/admin/users">Admin users</a>
+  
+<div id="create-game">
+    <form action="/admin/games/create" method="POST">
+      <input type="text" name="title" placeholder="{{this.title}}" />
+      <select name="genre" id="genre" >
+        <option value="Endless Runner">Endless Runner</option>
+        <option value="Shoot'em up">Shoot'em up</option>
+      </select>
+      <textarea name="description" id="description" cols="30" rows="10" placeholder="Game Description">{{this.description}}</textarea>
+      <input type="text" name="createdBy" placeholder="Creator" />
+      <input type="text" name="gameSource" placeholder="Game URL" />
+      <input type="submit" value="Creaate Game">
+    </form>

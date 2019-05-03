@@ -1,5 +1,5 @@
 <div id="log-in-lightbox"class="hide">
-    <form id="log-in-form" action="/login" method="POST">
+    <form id="log-in-form" action="/login" method="POST" class="home-form"/>
     <h3>Log in</h3>
     <fieldset class="field">
     <label class="label">Email</label>
@@ -26,7 +26,7 @@
   </div>
 
   <div id="sign-up-lightbox" class="hide">
-  <form id="sign-up-form" action="/signup" method="POST">
+  <form id="sign-up-form" action="/signup" method="POST" class="home-form"/>
     <h3>Sign Up</h3>
       <fieldset class="field">
         <label class="label">Name</label>
@@ -74,21 +74,12 @@
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-end">
-      <a class="navbar-item">Donate</a>
-      <a class="navbar-item">Become a Hacker</a>
-       <a class="navbar-item">Games</a>
-    </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a id="sign-up-nav" class="button is-info is-outlined">
-            <strong>Sign up</strong>
-          </a>
-          <a id="log-in-nav" class="button is-info">
-            Log in
-          </a>
+          <a id="sign-up-nav" class="button is-info is-outlined">Sign up</a>
+          <a id="log-in-nav" class="button is-info">Log in</a>
         </div>
       </div>
     </div>
@@ -165,7 +156,8 @@
           <a href=""><img src="/images/caveman-thumb.jpg" alt=""/></a>
         </figure>
       </article>
-  º</div>
+  </div>
+  <a id="browse-all" class="button is-info" href="">Browse All Games</a>
   </div>
 </section>
 <section id="donate">
