@@ -33,27 +33,24 @@
     <h3>{{loggedUser.role}}</h3>
   </div>
 </header>
-
 <div id="gamer-profile" class="container">
   <figure><img src="{{loggedUser.photoURL}}" alt=""></figure>
-  <div>
+  <div id="gamer-btns">
     <a href="/dashboard/edit/{{loggedUser._id}}" class="button is-info">Edit Profile</a>
-    <a href="/dashboard/games">Add Favorite Games</a>
+    <a href="/dashboard/games" class="button is-info">Add Favorite Games</a>
     <a href="/dashboard/delete/{{loggedUser._id}}"  onclick="return confirm('Are you reaaaaally sure?')" class="button is-danger">Delete Profile</a>
   </div>
   <h2><i class="fas fa-star"></i>&nbsp;Favorite Games</h2>
-  <section>
+  <section id="games-container">
       {{#each favoriteGames as |game|}}
       <article>
         <h3>{{game.title}}</h3>
-        <a href= "/games/{{game._id}}">
-            <img src = "{{game.image}}" alt= "{{game.title}}" />
-          </a>
-        <div class="buttons">
-            <form action="/dashboard/deleteFav/{{game._id}}" method="POST">
-            <button type="submit">Delete from favorites</button>
+        <form action="/dashboard/deleteFav/{{game._id}}" method="POST">
+            <button type="submit" class="delete-favs button is-danger">Delete from favorites</button>
             </form> 
-          </div>
+        <a href= "/games/game/{{game._id}}">
+            <img src = "{{game.thumbnail}}" alt= "{{game.title}}" />
+          </a>
       </article>
           
       {{/each}}

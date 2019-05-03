@@ -2,6 +2,14 @@ const mongoose = require("mongoose")
 
 const gameSchema = new mongoose.Schema(
 	{
+		thumbnail: {
+			type: String,
+			default:"/images/default-thumb.jpg"
+		},
+		cover: {
+			type: String,
+			default:"/images/default-large.jpg"
+		},
 		title: {
 			type: String,
 			unique: true,
@@ -13,8 +21,6 @@ const gameSchema = new mongoose.Schema(
 		description: String, 
 		createdBy: String,
 		gameSource: String,
-		thumbnail: String,
-		cover: String,
 	},
 	{
 		timestamps: true,
