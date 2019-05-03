@@ -32,7 +32,41 @@
     </div>
   </div>
 </nav>
-<h1>Welcome, {{loggedUser.name}}</h1>
-<h3>{{loggedUser.role}}</h3>
-  <a href="/admin/games">Admin Games</a>
-  <a href="/admin/users">Admin users</a>
+
+<header>
+  <div class="container">
+    <h1>Welcome, {{loggedUser.name}}</h1>
+    <h3>{{loggedUser.role}}</h3>
+  </div>
+</header>
+
+<div id="gamer-profile" class="container">
+  <figure><img src="{{loggedUser.photoURL}}" alt=""></figure>
+</div>
+
+<div class="container">
+<div class="card" style="width: 30%; margin: 20px;">
+  <div class="card-image waves-effect waves-block waves-light">
+    <figure class="image is-4by3">
+      <img src="#" alt="Placeholder image">
+    </figure>
+  </div>
+  <footer class="card-footer">
+    <a href="/admin/games" class="button is-info">Admin Games</a>
+  </footer>
+</div>
+
+<div class="card" style="width: 30%; margin: 20px;">
+  <div class="card-image waves-effect waves-block waves-light">
+    <figure class="image is-4by3">
+      <img src="#" alt="Placeholder image">
+    </figure>
+  </div>
+  <footer class="card-footer">
+    <a href="/admin/users" class="button is-info">Admin Users</a>
+  </footer>
+</div>
+
+</div>
+
+  
