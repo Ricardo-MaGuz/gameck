@@ -11,7 +11,6 @@ const { isLogged} = require('../handlers/middlewares')
     User.findByIdAndUpdate(req.user._id)
     .populate('favoriteGames')
     .then(user => {
-      // console.log(user)
       res.render('dashboard/Gamer', user)
     })
   })
@@ -37,7 +36,7 @@ router.get('/games/game/:id',isLogged, (req,res) => {
   })
 })
 
-router.get('/games/game/play/:id',isLogged, (req,res) => {
+router.get('/game/play/:id',isLogged, (req,res) => {
   const {id} = req.params
   Game.findById(id)
   .then(game => {
@@ -63,7 +62,6 @@ router.post('/dashboard/edit/:id',isLogged, (req, res, next) => {
   const { id } = req.params
   User.findByIdAndUpdate(id, { $set: { ...req.body } }, { new: true })
     .then(user => {
-      // console.log(user)
       res.redirect(`/dashboard/${id}`)
     })
     .catch(err => {

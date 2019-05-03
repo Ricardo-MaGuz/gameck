@@ -2,7 +2,6 @@ const router = require('express').Router()
 const User = require('../models/User')
 const Game = require('../models/Game')
 const {isLogged, isAdmin} = require('../handlers/middlewares')
-router.get('/admin/index', (req, res, next) => res.render('admin/index'))
 
 router.get('/admin', isAdmin, (req, res, next) => {
   const { role } = req.user;

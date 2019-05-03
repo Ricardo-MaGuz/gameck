@@ -1,19 +1,118 @@
-
-<h1> GAMES </h1>
-
-<div class="card" style="width: 30%; margin: 20px;">
-    <div class="card-image waves-effect waves-block waves-light">
-        <img class = "activator" src = "{{game.image}}" alt= "{{game.title}}" width="200px"/>
+<div id="log-in-lightbox"class="hide">
+    <form id="log-in-form" action="/login" method="POST" class="home-form"/>
+    <h3>Log in</h3>
+    <fieldset class="field">
+    <label class="label">Email</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-info" type="email" name="email" placeholder="Email"/>
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
     </div>
+  </fieldset>
+    <fieldset class="field">
+    <label class="label">Password:</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-info" type="password" name="password" placeholder="It's our secret"/>
+      <span class="icon is-small is-left">
+        <i class="fas fa-lock"></i>
+      </span>
+    </div>
+  </fieldset>
+      <div class="control">
+        <button class="button is-info is-fullwidth" type="submit">Log in</button>
+      </div>
+    </form>
+  </div>
 
-    <div class="card-content">
-        <a href= '/games/{{game._id}}'>
-        <span class="card-title grey-text text-darken-4">{{game.title}}</span>
-        </a>
+  <div id="sign-up-lightbox" class="hide">
+  <form id="sign-up-form" action="/signup" method="POST" class="home-form"/>
+    <h3>Sign Up</h3>
+      <fieldset class="field">
+        <label class="label">Name</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-info" type="name" name="name" placeholder="Your Name"/>
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+        </div>
+      </fieldset>
+      <fieldset class="field">
+        <label class="label">Email</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-info" type="email" name="email" placeholder="Your Email"/>
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+        </div>
+      </fieldset>
+      <fieldset class="field">
+        <label class="label">Password:</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-info" type="password" name="password" placeholder="It's our secret"/>
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </div>
+      </fieldset>
+      <div class="control">
+        <button class="button is-info is-fullwidth" type="submit">Sign up</button>
+      </div>
+    </form>
+  </div>
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/images/logo.jpg">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a id="sign-up-nav" class="button is-info is-outlined">Sign up</a>
+          <a id="log-in-nav" class="button is-info">Log in</a>
+        </div>
+      </div>
     </div>
-    <div class="buttons">
-      <form action="/dashboard/games/{{game._id}}" method="POST">
-        <button type="submit">Add to favorites</button>
-      </form> 
+  </div>
+</nav>
+
+<header>
+  <div class="container" style="background: url({{game.cover}}) no-repeat">
+    <h1>{{game.title}}</h1>
+      <div id="gamer-btns">
+     
+  </div>
+</header>
+<div id="gamer-profile" class="container">
+    <div id="gamer-btns">
+        <form action="/dashboard/games/{{game._id}}" method="POST">
+          <button id="add-btn" type="submit" class="button is-success">Add to favorites</button>
+        </form>    
+        <a href="/game/play/{{game._id}}" class="button is-orange">Play!</a>
     </div>
+  </div>
+  <section id="games-container">
+    <h2>Creator: {{game.createdBy}}</h2>
+    <h3>Genre: {{game.genre}}</h3> 
+    <p>Description: {{game.description}}</p>
+  </section>
 </div>
+<section id="donate">
+  <div class="container">
+     <h2>What Are You Waiting For?</h2>
+    <div class="body-button" id="join-btn">
+      <div id="slide"></div>
+      <a>Join Now</a>
+    </div>
+  </div>
+</section>

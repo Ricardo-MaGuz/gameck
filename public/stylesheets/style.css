@@ -52,7 +52,7 @@ form label {
 button[type=submit] {
   margin-top: 30px; }
 
-.donate-btn[type=submit] {
+.donate-btn[type=submit], #add-btn[type=submit] {
   margin-top: 0px; }
 
 #browse-all {
@@ -78,6 +78,16 @@ button[type=submit] {
   align-items: center;
   justify-content: center;
   overflow: hidden; }
+
+.is-orange {
+  background: #d18b3f;
+  color: white;
+  border: #d18b3f; }
+
+.is-orange:hover {
+  background: white;
+  color: #d18b3f;
+  border: white; }
 
 /* Hero Button */
 #hero-btn {
@@ -159,7 +169,7 @@ header h1 {
   font-weight: bold;
   text-align: right;
   margin-right: 20px;
-  margin-top: 20px; }
+  margin-top: 30px; }
 
 header h3 {
   font-weight: normal;
@@ -217,7 +227,8 @@ header .body-button {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 0 5%; }
+  padding: 0 5%;
+  min-height: 8rem; }
 
 #games-container article {
   width: 32%;
@@ -225,7 +236,7 @@ header .body-button {
   position: relative;
   margin-bottom: 1rem; }
 
-.delete-favs[type=submit] {
+.delete-favs[type=submit], .add-favs[type=submit] {
   margin-top: 0px;
   position: absolute;
   bottom: 0px;
@@ -237,6 +248,23 @@ header .body-button {
 .delete-favs[type=submit]:hover {
   color: crimson;
   background: white; }
+
+.add-favs[type=submit]:hover {
+  color: #23d160;
+  background: white; }
+
+.game-title {
+  position: absolute;
+  top: 0px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  font-size: 1.2rem;
+  line-height: 40px;
+  height: 40px;
+  width: 100%;
+  background-color: #209cee; }
 
 #features {
   width: 100%;
@@ -332,7 +360,8 @@ footer p {
 
 iframe {
   width: 100vw;
-  height: 100vh; }
+  height: 100vh;
+  margin-top: 3rem; }
 
 @media (max-width: 500px) {
   #games-container article {

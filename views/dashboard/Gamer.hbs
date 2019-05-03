@@ -44,7 +44,7 @@
   <section id="games-container">
       {{#each favoriteGames as |game|}}
       <article>
-        <h3>{{game.title}}</h3>
+        <h3 class="game-title">{{game.title}}</h3>
         <form action="/dashboard/deleteFav/{{game._id}}" method="POST">
             <button type="submit" class="delete-favs button is-danger">Delete from favorites</button>
             </form> 
@@ -52,7 +52,6 @@
             <img src = "{{game.thumbnail}}" alt= "{{game.title}}" />
           </a>
       </article>
-          
       {{/each}}
   </section>
 </div>
