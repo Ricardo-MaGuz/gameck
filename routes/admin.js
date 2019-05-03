@@ -21,11 +21,16 @@ router.get('/admin/games', isAdmin, (req, res, next) => {
     .catch(err => next(err))
 })
 //CREATE
+router.get('/admin/games/create', isAdmin, (req, res, next) => {
+  res.render('admin/games/create')
+})
+
 router.post('/admin/games/create', isAdmin, (req, res, next) => {
   Game.create({...req.body})
   .then(() => res.redirect('/admin/games'))
   .catch(err => next(err))
 })
+
 //UPDATE
 router.get('/admin/games/edit/:id', isAdmin, (req, res, next) => {
   const { id } = req.params

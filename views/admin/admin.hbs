@@ -15,7 +15,7 @@
     <div class="navbar-end">
       <a class="navbar-item">Donate</a>
       <a class="navbar-item">Become a Hacker</a>
-       <a class="navbar-item">Games</a>
+      <a href="/admin/games">Games</a>
     </div>
 
     <div class="navbar-end">
@@ -44,7 +44,8 @@
   <figure><img src="{{loggedUser.photoURL}}" alt=""></figure>
 </div>
 
-<div class="container">
+<div class="container" style="display:flex">
+
 <div class="card" style="width: 30%; margin: 20px;">
   <div class="card-image waves-effect waves-block waves-light">
     <figure class="image is-4by3">
@@ -52,7 +53,7 @@
     </figure>
   </div>
   <footer class="card-footer">
-    <a href="/admin/games" class="button is-info">Admin Games</a>
+    <a href="/admin/games/create" class="button is-info">Add Games</a>
   </footer>
 </div>
 
@@ -63,7 +64,18 @@
     </figure>
   </div>
   <footer class="card-footer">
-    <a href="/admin/users" class="button is-info">Admin Users</a>
+    <a href="/admin/games" class="button is-info">See Games</a>
+  </footer>
+</div>
+
+<div class="card" style="width: 30%; margin: 20px;">
+  <div class="card-image waves-effect waves-block waves-light">
+    <figure class="image is-4by3">
+      <img src="#" alt="Placeholder image">
+    </figure>
+  </div>
+  <footer class="card-footer">
+    <a href="/admin/users" class="button is-info">See Users</a>
   </footer>
 </div>
 
