@@ -1,18 +1,52 @@
-<h1>Welcome, {{loggedUser.name}}</h1>
-<h3>{{loggedUser.role}}</h3>
-<img src="{{loggedUser.photoURL}}" alt="">
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/images/logo.jpg">
+    </a>
 
-<div style ="display: flex; flex-wrap: wrap;">
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
 
-<a href="/dashboard/edit/{{loggedUser._id}}">Edit Profile</a>
-<br>
-<br>
-<a href="/dashboard/games">See games</a>
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-end">
+      <a class="navbar-item">Donate</a>
+      <a class="navbar-item">Become a Hacker</a>
+       <a class="navbar-item">Games</a>
+    </div>
 
-<br>
-<h1> GAMES </h1>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a id="sign-up-nav" class="button is-info is-outlined">
+            <strong>Log Out</strong>
+          </a>
+          <a id="log-in-nav" class="button is-info">
+            Donate
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<header>
+  <div class="container">
+    <h1>Welcome, {{loggedUser.name}}</h1>
+    <h3>{{loggedUser.role}}</h3>
+  </div>
+</header>
 
-{{#each favoriteGames as |game|}}
+<div id="gamer-profile" class="container">
+  <figure><img src="{{loggedUser.photoURL}}" alt=""></figure>
+  <div>
+    <a href="/dashboard/edit/{{loggedUser._id}}">Edit Profile</a>
+    <a href="/dashboard/games">Add Favorite Games</a>
+  </div>
+  <h2><i class="fas fa-star"></i>&nbsp;Favorite Games</h2>
+  {{#each favoriteGames as |game|}}
 <div class="card" style="width: 30%; margin: 20px;">
     <div class="card-image waves-effect waves-block waves-light">
         <a href= "/games/{{game._id}}">
@@ -27,13 +61,23 @@
     </div>
 
     <div class="buttons">
-      <form action="/dashboard/delete/{{game._id}}" method="POST">
+      <form action="/dashboard/deleteFav/{{game._id}}" method="POST">
         <button type="submit">Delete from favorites</button>
       </form> 
     </div>
 </div>
 
 
-{{/each}}
 
+{{/each}}
 </div>
+
+<section id="donate">
+  <div class="container">
+     <h2><i class="fas fa-beer"></i> Buy us a Beer</h2>
+    <div class="body-button" id="donate-btn">
+      <div id="slide"></div>
+      <a>Donate</a>
+    </div>
+  </div>
+</section>
