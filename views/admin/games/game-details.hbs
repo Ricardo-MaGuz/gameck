@@ -1,10 +1,62 @@
-<div class="col s12 m12">
-    <div class="card horizontal">
-      <div class="card-stacked">
-        <div class="card-content">
-          <h4>{{title}}</h4>
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/images/logo.jpg">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-end">
+      <a class="navbar-item">Donate</a>
+       <a class="navbar-item">Games</a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-info is-outlined">
+            <strong>Log out</strong>
+          </a>
+          <a class="button is-info">
+            Donate
+          </a>
         </div>
       </div>
     </div>
+  </div>
+</nav>
+
+<header>
+  <div class="container">
+    <h1>Welcome, {{loggedUser.name}}</h1>
+    <h3>Edit game</h3>
+  </div>
+</header>
+
+<div id="gamer-profile" class="container">
+  <figure><img src="{{loggedUser.photoURL}}" alt=""></figure>
 </div>
 
+<div class="card" style="width: 95%; height: 80%; margin: 20px;">
+    <div class="card-image waves-effect waves-block waves-light">
+        <a href= "/games/{{game._id}}">
+        <img class = "activator" src = "{{game.image}}" alt= "{{game.title}}" width="200px"/>
+        </a>
+    </div>
+
+    <div class="card-content">
+        <a href= '/games/{{game._id}}'>
+        <span class="card-title grey-text text-darken-4">{{game.title}}</span>
+        </a>
+    </div>
+
+    <footer class="card-footer">
+    <a href="/admin/games/edit/{{game._id}}" class="button is-info">Edit game</a>
+    </footer>
+</div>
