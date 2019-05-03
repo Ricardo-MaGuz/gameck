@@ -33,30 +33,32 @@
 </nav>
 
 <header>
-  <div class="container">
-    <h1>Welcome, {{loggedUser.name}}</h1>
-    <h3>Edit or delete the users</h3>
-  </div>
+  <div class="container" style="background: url({{game.cover}}) no-repeat">
+    <h1>{{game.title}}</h1>
+      <div id="gamer-btns">   
+</div>
 </header>
 
-<div id="gamer-profile" class="container">
-  <figure><img src="{{loggedUser.photoURL}}" alt=""></figure>
-</div>
 
 <div id="gamer-profile" class="container">
-  <h2><i class="fas fa-award"></i>&nbsp;Users</h2>
-
-<section id="users-container">
-{{#each users as |user|}}
-      <article>
-        <h3 class="user-name">{{user.name}}</h3>
-        <form action="/admin/users/delete/{{user._id}}" method="POST">
-            <button id="delete-games-admin" type="submit" class="delete-favs button is-danger">Delete user</button>
-        </form> 
-        <form action="/admin/users/edit/{{user._id}}" method="POST">
-            <button type="submit" class="delete-favs button is-info">Edit user</button>
-            </form> 
-      </article>
-      {{/each}}
+    <div id="gamer-btns">
+        <form action="/dashboard/games/{{game._id}}" method="POST">
+        <a href="/admin/games/edit/{{game._id}}" class="button is-info">Edit game</a>
+        </form>    
+    </div>
+  </div>
+  <div class="container">
+  <section id="desc-container">
+    <article>
+      <h2><span class="bold">Creator:</span> {{game.createdBy}}</h2>
+      <h3><span class="bold">Genre:</span> {{game.genre}}</h3> 
+    </article>
+    <article>
+    <p><span class="bold">Description:</span> {{game.description}}</p>
+    </article>
   </section>
-</div>
+  </div>
+
+
+
+

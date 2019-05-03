@@ -12,6 +12,7 @@
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
+
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
@@ -26,22 +27,40 @@
     </div>
   </div>
 </nav>
-<h1>Welcome, {{loggedUser.name}}</h1>
-<h3>{{loggedUser.role}}</h3>
-  <a href="/admin/games">Admin Games</a>
-  <a href="/admin/users">Admin users</a>
-  <div id="create-game">
-    <form action="/admin/games/create" method="POST">
-      <input type="text" name="title" placeholder="{{this.title}}" />
-      <select name="genre" id="genre" >
-        <option value="Endless Runner">Endless Runner</option>
-        <option value="Shoot'em up">Shoot'em up</option>
-      </select>
-      <textarea name="description" id="description" cols="30" rows="10" placeholder="Game Description">{{this.description}}</textarea>
-      <input type="text" name="createdBy" placeholder="Creator" />
-      <input type="text" name="gameSource" placeholder="Game URL" />
-      <input type="submit" value="Creaate Game">
-    </form>
+
+<header>
+  <div class="container">
+    <h1>Welcome, {{loggedUser.name}}</h1>
+    <h3>{{loggedUser.role}}</h3>
+  </div>
+</header>
+
+<div id="gamer-profile" class="container">
+  <figure><img src="{{loggedUser.photoURL}}" alt=""></figure>
+</div>
+
+<div class="container" style="display:flex">
+<div class="card" style="width: 30%; margin: 20px;">
+    <figure class="image is-4by3">
+      <img src="/images/add-games.png" alt="Placeholder image">
+      <a href="/admin/games/create" class="button is-info">Add Games</a>
+    </figure>
+</div>
+<div class="card" style="width: 30%; margin: 20px;">
+    <figure class="image is-4by3">
+      <img src="/images/edit-games.png" alt="Placeholder image">
+      <a href="/admin/games" class="button is-info">See Games</a>
+    </figure>
+  </div>
+
+<div class="card" style="width: 30%; margin: 20px;">
+    <figure class="image is-4by3">
+      <img src="/images/edit-users.png" alt="Placeholder image">
+    <a href="/admin/users" class="button is-info">See Users</a>
+    </figure>
+  </div>
+
+</div>
 
     <section id="donate">
       <div class="container">

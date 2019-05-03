@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+require('dotenv').config();
+
 const mongoose = require('mongoose')
 const Game = require('../models/Game')
 require('dotenv').config();

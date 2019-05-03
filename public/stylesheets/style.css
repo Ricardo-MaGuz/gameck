@@ -30,7 +30,7 @@ a {
 .home-form {
   display: block;
   position: relative;
-  margin: 0 auto;
+  margin: 20px auto 30px auto;
   width: 300px;
   background: white;
   border-radius: 5%;
@@ -194,6 +194,58 @@ header .container {
 header .body-button {
   float: right; }
 
+#delete-games-admin {
+  margin-top: 0px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  -webkit-box-shadow: -7px -7px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -7px -7px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: -7px -7px 5px 0px rgba(0, 0, 0, 0.75); }
+
+#delete-games-admin:hover {
+  color: crimson;
+  background: white; }
+
+.see-favs[type=submit] {
+  margin-top: 0px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  -webkit-box-shadow: -7px -7px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -7px -7px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: -7px -7px 5px 0px rgba(0, 0, 0, 0.75); }
+
+.see-favs[type=submit]:hover {
+  color: #209cee;
+  background: white; }
+
+.user-name {
+  position: absolute;
+  top: 0px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  font-size: 1.2rem;
+  line-height: 40px;
+  height: 40px;
+  width: 100%;
+  background-color: #209cee; }
+
+#users-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 5%;
+  min-height: 8rem; }
+
+#users-container article {
+  width: 32%;
+  height: auto;
+  position: relative;
+  margin-bottom: 1rem; }
+
 #gamer-profile {
   overflow: visible;
   min-height: 5rem;
@@ -282,6 +334,14 @@ header .body-button {
   height: 40px;
   width: 100%;
   background-color: #209cee; }
+
+#container-form {
+  padding-bottom: 30px;
+  max-width: 100%;
+  width: 500px;
+  display: block;
+  position: relative;
+  margin: 0 auto; }
 
 #features {
   width: 100%;

@@ -14,7 +14,6 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-end">
       <a class="navbar-item">Donate</a>
-      <a class="navbar-item">Become a Hacker</a>
        <a class="navbar-item">Games</a>
     </div>
 
@@ -36,7 +35,7 @@
 <header>
   <div class="container">
     <h1>Welcome, {{loggedUser.name}}</h1>
-    <h3>Edit {{game.title}}</h3>
+    <h3>Create a new game</h3>
   </div>
 </header>
 
@@ -45,14 +44,14 @@
 </div>
 
 <div id="gamer-profile" class="container">
-  <h2><i class="fas fa-award"></i>&nbsp;Fill in the blanks to edit game</h2>
+  <h2><i class="fas fa-award"></i>&nbsp;Fill in the blanks to create new game</h2>
 
 <div id="container-form" class="container">
 <div id="create-game">
-  <form class="col s6 offset-s3" action="/admin/games/edit/{{game._id}}" method="POST">
+  <form class="col s6 offset-s3" action="/admin/games/create" method="POST">
   <div class="field">
   <label class="label">Title</label>
-  <input class="input" type="text" name="title" placeholder="Title" value="{{game.title}}">
+  <input class="input" type="text" name="title" placeholder="Title">
 </div>
 
 <div class="field">
@@ -81,27 +80,27 @@
 <div class="field">
   <label class="label">Description</label>
   <div class="control">
-    <textarea class="textarea" name="description" id="description"placeholder="Game Description" value="{{game.description}}"></textarea>
+    <textarea class="textarea" name="description" id="description"placeholder="Game Description"></textarea>
   </div>
 </div>
 
 <div class="field">
   <label class="label">Created By</label>
   <div class="control">
-    <input class="input" type="text" name="createdBy" placeholder="Created By" value="{{game.createdBy}}">
+    <input class="input" type="text" name="createdBy" placeholder="Created By">
   </div>
 </div>
 
 <div class="field">
   <label class="label">Source</label>
   <div class="control">
-    <input class="input" type="text" name="gameSource" placeholder="Game Source" value="{{game.gameSource}}" />
+    <input class="input" type="text" name="gameSource" placeholder="Game Source" />
   </div>
 </div>
 
 <div class="field is-grouped">
   <div class="control">
-    <button type="submit" value="Edit Game" class="button is-info">Edit Game</button>
+    <button type="submit" value="Create Game" class="button is-info">Create Game</button>
   </div>
 </div>
 </form>
