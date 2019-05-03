@@ -360,7 +360,7 @@ footer p {
 
 iframe {
   width: 100vw;
-  height: 100vh;
+  height: 900px;
   margin-top: 3rem; }
 
 @media (max-width: 500px) {
