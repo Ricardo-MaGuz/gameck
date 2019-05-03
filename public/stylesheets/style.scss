@@ -11,13 +11,17 @@ body.has-navbar-fixed-top, html.has-navbar-fixed-top{
 a {
   text-decoration: none;
 }
+//NAv 
+.navbar-item img {
+  max-height: 40px;
+}
 //Forms
 #log-in-lightbox,#sign-up-lightbox{
   position: fixed;
   width: 100vw;
   height: 100vh;
   z-index: 100;
-  padding-top: 10vh;
+  padding-top: 15vh;
   background: rgba(115,183,222,1);
   background: -moz-linear-gradient(left, rgba(115,183,222,1) 0%, rgba(39,119,165,1) 0%, rgba(35,39,54,0.8) 100%);
   background: -webkit-gradient(left top, right top, color-stop(0%, rgba(115,183,222,1)), color-stop(0%, rgba(39,119,165,1)), color-stop(100%, rgba(35,39,54,0.8)));
@@ -27,7 +31,7 @@ a {
   background: linear-gradient(to right, rgba(115,183,222,1) 0%, rgba(39,119,165,1) 0%, rgba(35,39,54,0.8) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#73b7de', endColorstr='#232736', GradientType=1 );
 }
-form{
+.home-form{
   display: block;
   position: relative;
   margin: 20px auto 30px auto;
@@ -52,6 +56,15 @@ form label{
 button[type=submit]{
   margin-top: 30px;
 }
+.donate-btn[type=submit], #add-btn[type=submit]  {
+  margin-top:0px;
+}
+#browse-all{
+  position: relative;
+  margin: 0 auto;
+  display: block;
+  width: 32%;
+}
 /* Button Styles */
 .body-button {
   display: inline-flex;
@@ -70,7 +83,16 @@ button[type=submit]{
   justify-content: center;
   overflow: hidden;
 }
-
+.is-orange{
+  background: #d18b3f;
+  color:white;
+  border:#d18b3f;
+}
+.is-orange:hover{
+  background: white;
+  color:#d18b3f;
+  border:white;
+}
 /* Hero Button */
 
 #hero-btn {
@@ -161,7 +183,7 @@ header h1{
   font-weight: bold;
   text-align: right;
   margin-right: 20px;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 header h3{
   font-weight: normal;
@@ -175,18 +197,155 @@ header .container{
   background-size: contain;
   min-height: 40vh;
 }
+#profile-hero{
+  background: black;
+  padding-top: 3rem;
+}
+#profile-hero .container{
+  background: url(/images/profile-bg.jpg) center no-repeat;
+  background-size: contain;
+}
 header .body-button{
   float: right;
 }
+
+//Admin Profile
+#delete-games-admin {
+  margin-top:0px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  -webkit-box-shadow: -7px -7px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -7px -7px 5px 0px rgba(0,0,0,0.75);
+box-shadow: -7px -7px 5px 0px rgba(0,0,0,0.75);
+}
+#delete-games-admin:hover {
+  color:crimson;
+  background: white;
+}
+
+.see-favs[type=submit] {
+  margin-top:0px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  -webkit-box-shadow: -7px -7px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -7px -7px 5px 0px rgba(0,0,0,0.75);
+box-shadow: -7px -7px 5px 0px rgba(0,0,0,0.75);
+}
+.see-favs[type=submit]:hover {
+  color: #209cee;
+  background: white;
+}
+.user-name{
+  position: absolute;
+  top: 0px;
+  color:white;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  font-size: 1.2rem;
+  line-height: 40px;
+  height: 40px;
+  width: 100%;
+  background-color: #209cee;
+}
+#users-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 5%;
+  min-height: 8rem;
+}
+#users-container article{
+  width: 32%;
+  height: auto;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+
 //Gamer Profile
 #gamer-profile{
   overflow: visible;
+  min-height: 5rem;
+  padding-bottom: 3rem;
+}
+#gamer-profile h2{
+  margin-top: 3rem;
+  text-align: center;
+  color:#1b2131;
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 #gamer-profile figure{
   margin-top: -7rem;
   padding: .5rem;
   background: white;
   display:table;
+}
+#gamer-btns{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -60px;
+}
+#gamer-btns .button{
+ margin-left: .5rem;
+}
+#gamer-btns::after{
+  clear: both;
+}
+//Games View
+#games-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 5%;
+  min-height: 8rem;
+}
+#games-container article{
+  width: 32%;
+  height: auto;
+  position: relative;
+  margin-bottom: 1rem;
+}
+.delete-favs[type=submit],.add-favs[type=submit] {
+  margin-top:0px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  -webkit-box-shadow: -7px -7px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -7px -7px 5px 0px rgba(0,0,0,0.75);
+box-shadow: -7px -7px 5px 0px rgba(0,0,0,0.75);
+}
+.delete-favs[type=submit]:hover {
+  color:crimson;
+  background: white;
+}
+.add-favs[type=submit]:hover {
+  color:#23d160;
+  background: white;
+}
+.game-title{
+  position: absolute;
+  top: 0px;
+  color:white;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  font-size: 1.2rem;
+  line-height: 40px;
+  height: 40px;
+  width: 100%;
+  background-color: #209cee;
+}
+#container-form{
+  padding-bottom: 30px;
+  max-width: 100%;
+  width: 500px;
+  display: block;
+  position: relative;
+  margin: 0 auto;
 }
 //Features
 #features{
@@ -221,6 +380,9 @@ padding: 1rem 0;
   -webkit-box-shadow: 0px -11px 15px -4px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px -11px 15px -4px rgba(0,0,0,0.75);
   box-shadow: 0px -11px 15px -4px rgba(0,0,0,0.75);
+}
+#donate button{
+  background: transparent;
 }
 #donate h2{
   text-align: center;
@@ -283,4 +445,17 @@ text-align: center;
 }
 .navbar.is-fixed-top{
   z-index: 1000;
+}
+iframe{
+  width: 100vw;
+  height: 100vh;
+  margin-top: 3rem;
+}
+
+@media (max-width: 500px) {
+  //Games View
+#games-container article{
+  width: 45%;
+  height: auto;
+}
 }

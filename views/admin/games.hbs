@@ -32,7 +32,7 @@
   </div>
 </nav>
 
-<header>
+<header id="profile-hero">
   <div class="container">
     <h1>Welcome, {{loggedUser.name}}</h1>
     <h3>Edit or delete the games</h3>
@@ -40,31 +40,19 @@
 </header>
 
 <div id="gamer-profile" class="container">
-  <figure><img src="{{loggedUser.photoURL}}" alt=""></figure>
-</div>
+  <h2><i class="fas fa-award"></i>&nbsp;Our Extensive Library</h2>
 
-
-<div style ="display: flex; flex-wrap: wrap;">
-
-{{#each games as | game |}}
-
-<div class="card" style="width: 30%; margin: 20px;">
-    <div class="card-image waves-effect waves-block waves-light">
-        <a href= "/games/{{game._id}}">
-        <img class = "activator" src = "{{game.image}}" alt= "{{game.title}}" width="200px"/>
-        </a>
-    </div>
-
-    <div class="card-content">
-        <a href= '/games/{{game._id}}'>
-        <span class="card-title grey-text text-darken-4">{{game.title}}</span>
-        </a>
-    </div>
-
-    <footer class="card-footer">
-    <a href="/admin/games/delete/{{game._id}}" class="button is-info">Delete game</a>
-    <a href="/admin/games/game-details/{{game._id}}" class="button is-info">See game</a>
-    </footer>
-</div>
-{{/each}}
+<section id="games-container">
+      {{#each games as |game|}}
+      <article>
+        <h3 class="game-title">{{game.title}}</h3>
+        <form action="/admin/games/delete/{{game._id}}" method="POST">
+            <button id="delete-games-admin" type="submit" class="delete-favs button is-danger">Delete game</button>
+        </form> 
+        <a href= "/admin/games/game-details/{{game._id}}">
+            <img src = "{{game.thumbnail}}" alt= "{{game.title}}" />
+          </a>
+      </article>
+      {{/each}}
+  </section>
 </div>

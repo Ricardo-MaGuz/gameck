@@ -35,7 +35,7 @@
 <header>
   <div class="container">
     <h1>Welcome, {{loggedUser.name}}</h1>
-    <h3>Edit users</h3>
+    <h3>Edit {{user.name}}</h3>
   </div>
 </header>
 
@@ -43,7 +43,10 @@
   <figure><img src="{{loggedUser.photoURL}}" alt=""></figure>
 </div>
 
+<div id="gamer-profile" class="container">
+  <h2><i class="fas fa-award"></i>&nbsp;Fill in the blanks to edit user</h2>
 
+<div id="container-form" class="container">
 <div id="update-user">
   <form class="col s6 offset-s3" action="/admin/users/edit/{{user._id}}" method="POST">
   <div class="field">
@@ -70,4 +73,6 @@
   </div>
 </div>
 </form>
+</div>
+</div>
 </div>

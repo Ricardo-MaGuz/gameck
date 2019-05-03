@@ -1,0 +1,65 @@
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/images/logo.jpg">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a href="/logout" id="sign-up-nav" class="button is-info is-outlined">Log Out</a>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <button type="submit"class="button is-info donate-btn">Donate</button>
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="hidden" name="hosted_button_id" value="NBQT6Q6MGG894" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<header>
+  <div class="container" style="background: url({{game.cover}}) no-repeat">
+    <h1>{{game.title}}</h1>
+      <div id="gamer-btns">
+     
+  </div>
+</header>
+<div id="gamer-profile" class="container">
+    <div id="gamer-btns">
+        <form action="/dashboard/games/{{game._id}}" method="POST">
+          <button id="add-btn" type="submit" class="button is-success">Add to favorites</button>
+        </form>    
+        <a href="/game/play/{{game._id}}" class="button is-orange">Play!</a>
+    </div>
+  </div>
+  <section id="games-container">
+    <h2>Creator: {{game.createdBy}}</h2>
+    <h3>Genre: {{game.genre}}</h3> 
+    <p>Description: {{game.description}}</p>
+  </section>
+</div>
+
+<section id="donate">
+      <div class="container">
+     <h2><i class="fas fa-beer"></i> Buy us a Beer</h2>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <button type="submit" class="body-button" id="donate-btn">
+          <div id="slide"></div>
+          <a>Donate</a>
+        </button>
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="NBQT6Q6MGG894" />
+      </form>
+    
+  </div>
+</section>

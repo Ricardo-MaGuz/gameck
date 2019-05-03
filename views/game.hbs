@@ -85,80 +85,28 @@
     </div>
   </div>
 </nav>
-  
 
 <header>
-  <div class="container">
-    <h1>Broad your <br/>gaming experience</h1>
-    <div class="body-button" id="hero-btn">
-      <div id="circle"></div><a href="#">Sign Up</a>
-    </div>
+  <div class="container" style="background: url({{game.cover}}) no-repeat">
+    <h1>{{game.title}}</h1>
+      <div id="gamer-btns">
+     
   </div>
 </header>
-<section id="features">
-  <div class="container">
-    <div class="columns">
-      <article class="column has-text-centered">
-        <figure class="image is-128x128 has-image-centered ">
-          <img src="/images/feed.gif" alt=""/>
-        </figure>
-        <h3>Feed our Community</h3>
-      </article>
-      <article class="column has-text-centered">
-        <figure class="image is-128x128 has-image-centered ">
-          <img src="/images/gameplay.gif" alt=""/>
-        </figure>
-        <h3>Enjoy Unique Gameplay Experiences</h3>
-      </article>
-      <article class="column has-text-centered">
-        <figure class="image is-128x128 has-image-centered ">
-          <img src="/images/javascript.gif" alt=""/>
-        </figure>
-        <h3>Play Handcrafted Javascript Games</h3>
-      </article>
-  º</div>
+<div id="gamer-profile" class="container">
+    <div id="gamer-btns">
+        <form action="/dashboard/games/{{game._id}}" method="POST">
+          <button id="add-btn" type="submit" class="button is-success">Add to favorites</button>
+        </form>    
+        <a href="/game/play/{{game._id}}" class="button is-orange">Play!</a>
+    </div>
   </div>
-</section>
-
-<section id="landing-games" class="container">
-  <h2><i class="fas fa-rocket"></i>&nbsp;Check Out Our Top 6!</h2>
-<div class="container">
-<section id="games-container">
-      <article>
-        <a href= "/games/game/{{game._id}}">
-            <img src = "/images/default-thumb.jpg" alt= "Bomberman" />
-          </a>
-      </article>
-      <article>
-        <a href= "/games/game/{{game._id}}">
-            <img src = "/images/default-thumb.jpg" alt= "Bomberman" />
-          </a>
-      </article>
-      <article>
-        <a href= "/games/game/{{game._id}}">
-            <img src = "/images/default-thumb.jpg" alt= "Bomberman" />
-          </a>
-      </article>
-      <article>
-        <a href= "/games/game/{{game._id}}">
-            <img src = "/images/default-thumb.jpg" alt= "Bomberman" />
-          </a>
-      </article>
-      <article>
-        <a href= "/games/game/{{game._id}}">
-            <img src = "/images/default-thumb.jpg" alt= "Bomberman" />
-          </a>
-      </article>
-      <article>
-        <a href= "/games/game/{{game._id}}">
-            <img src = "/images/default-thumb.jpg" alt= "Bomberman" />
-          </a>
-      </article>
-          
+  <section id="games-container">
+    <h2>Creator: {{game.createdBy}}</h2>
+    <h3>Genre: {{game.genre}}</h3> 
+    <p>Description: {{game.description}}</p>
   </section>
-  <a id="browse-all" class="button is-info" href="/games">Browse All Games</a>
-  </div>
-</section>
+</div>
 <section id="donate">
   <div class="container">
      <h2>What Are You Waiting For?</h2>

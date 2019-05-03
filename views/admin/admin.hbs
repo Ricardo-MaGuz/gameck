@@ -12,21 +12,16 @@
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-end">
-      <a class="navbar-item">Donate</a>
-      <a class="navbar-item">Become a Hacker</a>
-      <a href="/admin/games">Games</a>
-    </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-info is-outlined">
-            <strong>Log out</strong>
-          </a>
-          <a class="button is-info">
-            Donate
-          </a>
+          <a href="/logout" id="sign-up-nav" class="button is-info is-outlined">Log Out</a>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <button type="submit"class="button is-info donate-btn">Donate</button>
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="hidden" name="hosted_button_id" value="NBQT6Q6MGG894" />
+          </form>
         </div>
       </div>
     </div>
@@ -45,40 +40,39 @@
 </div>
 
 <div class="container" style="display:flex">
-
 <div class="card" style="width: 30%; margin: 20px;">
-  <div class="card-image waves-effect waves-block waves-light">
     <figure class="image is-4by3">
-      <img src="#" alt="Placeholder image">
+      <img src="/images/add-games.png" alt="Placeholder image">
+      <a href="/admin/games/create" class="button is-info">Add Games</a>
     </figure>
-  </div>
-  <footer class="card-footer">
-    <a href="/admin/games/create" class="button is-info">Add Games</a>
-  </footer>
 </div>
-
 <div class="card" style="width: 30%; margin: 20px;">
-  <div class="card-image waves-effect waves-block waves-light">
     <figure class="image is-4by3">
-      <img src="#" alt="Placeholder image">
+      <img src="/images/edit-games.png" alt="Placeholder image">
+      <a href="/admin/games" class="button is-info">See Games</a>
     </figure>
   </div>
-  <footer class="card-footer">
-    <a href="/admin/games" class="button is-info">See Games</a>
-  </footer>
-</div>
 
 <div class="card" style="width: 30%; margin: 20px;">
-  <div class="card-image waves-effect waves-block waves-light">
     <figure class="image is-4by3">
-      <img src="#" alt="Placeholder image">
-    </figure>
-  </div>
-  <footer class="card-footer">
+      <img src="/images/edit-users.png" alt="Placeholder image">
     <a href="/admin/users" class="button is-info">See Users</a>
-  </footer>
-</div>
+    </figure>
+  </div>
 
 </div>
 
-  
+    <section id="donate">
+      <div class="container">
+     <h2><i class="fas fa-beer"></i> Buy us a Beer</h2>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <button type="submit" class="body-button" id="donate-btn">
+          <div id="slide"></div>
+          <a>Donate</a>
+        </button>
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="NBQT6Q6MGG894" />
+      </form>
+    
+  </div>
+</section>

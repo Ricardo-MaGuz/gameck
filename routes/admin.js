@@ -2,7 +2,6 @@ const router = require('express').Router()
 const User = require('../models/User')
 const Game = require('../models/Game')
 const {isLogged, isAdmin} = require('../handlers/middlewares')
-router.get('/admin/index', (req, res, next) => res.render('admin/index'))
 
 router.get('/admin', isAdmin, (req, res, next) => {
   const { role } = req.user;
@@ -95,23 +94,13 @@ router.get('/admin/users/edit/:id', (req, res, next) => {
       console.log(err)
     })
 })
-router.get('/admin/users/user-details/:id', (req,res) => {
-  const {id} = req.params
-  User.findById(id)
-  .then(user => {
-    res.render('admin/users/user-details', {user})
-  })
-  .catch(err => { 
-    res.send(err)
-  })
-})
 
 router.post('/admin/users/edit/:id', (req, res, next) => {
   const { id } = req.params
   User.findByIdAndUpdate(id, { $set: { ...req.body } }, { new: true })
     .then(user => {
       console.log(user)
-      res.redirect(`/admin/users/user-details/${id}`)
+      res.redirect(`/admin/users/edit/${id}`)
     })
     .catch(err => {
       res.send(err)
